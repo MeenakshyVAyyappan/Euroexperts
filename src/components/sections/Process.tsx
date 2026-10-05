@@ -13,7 +13,15 @@ export default function Process() {
 
   return (
     <section id="process" className="relative py-24 lg:py-32 bg-obsidian overflow-hidden">
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background ambient lighting */}
+      <motion.div
+        animate={{
+          opacity: [0.06, 0.14, 0.06],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[160px] pointer-events-none"
+      />
 
       <div className="max-w-5xl mx-auto px-6 lg:px-10 relative z-10">
         <SectionTitle
@@ -25,11 +33,11 @@ export default function Process() {
 
         <div ref={ref} className="relative mt-16">
           {/* Track line — background */}
-          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-charcoal-light lg:-translate-x-1/2" />
+          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px bg-white/10 lg:-translate-x-1/2" />
 
           {/* Animated gold line */}
           <motion.div
-            className="absolute left-6 lg:left-1/2 top-0 w-px bg-gold-gradient lg:-translate-x-1/2"
+            className="absolute left-6 lg:left-1/2 top-0 w-px bg-gold-gradient shadow-lg shadow-gold/50 lg:-translate-x-1/2"
             style={{ height: lineHeight }}
           />
 
@@ -41,16 +49,28 @@ export default function Process() {
                     i % 2 === 0 ? 'lg:flex-row-reverse' : ''
                   }`}
                 >
-                  {/* Dot on the line */}
-                  <div className="absolute left-6 lg:left-1/2 top-2 w-4 h-4 rounded-full bg-gold border-2 border-obsidian lg:-translate-x-1/2 z-10 shadow-lg shadow-gold/30" />
+                  {/* Glowing Dot on the line */}
+                  <div className="absolute left-6 lg:left-1/2 top-3 w-5 h-5 rounded-full bg-gold-gradient border-2 border-obsidian lg:-translate-x-1/2 z-10 shadow-lg shadow-gold/60 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-obsidian animate-ping" />
+                  </div>
 
                   {/* Content card */}
                   <div className={`flex-1 pl-16 lg:pl-0 ${i % 2 === 0 ? 'lg:text-right lg:pr-16' : 'lg:pl-16'}`}>
-                    <div className="glass rounded-2xl p-6 lg:p-7 inline-block w-full">
-                      <span className="font-serif text-3xl text-gold-gradient block mb-2">{step.num}</span>
-                      <h3 className="font-serif text-2xl text-ivory mb-2">{step.title}</h3>
-                      <p className="text-sm text-muted font-sans leading-relaxed">{step.text}</p>
-                    </div>
+                    <motion.div
+                      whileHover={{ y: -6, scale: 1.015 }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                      className="group glass rounded-2xl p-6 lg:p-8 inline-block w-full border border-white/10 hover:border-gold/50 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/15 bg-obsidian-light/60 backdrop-blur-xl"
+                    >
+                      <span className="font-serif text-3xl lg:text-4xl text-gold-gradient font-bold block mb-2 transition-transform duration-300 group-hover:scale-105 origin-left">
+                        {step.num}
+                      </span>
+                      <h3 className="font-serif text-2xl text-ivory mb-2 font-semibold group-hover:text-gold-gradient transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm text-muted font-sans leading-relaxed">
+                        {step.text}
+                      </p>
+                    </motion.div>
                   </div>
 
                   {/* Spacer for alternating layout */}

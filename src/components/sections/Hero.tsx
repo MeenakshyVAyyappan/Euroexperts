@@ -1,12 +1,38 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MessageCircle, Phone, ChevronDown } from 'lucide-react';
 import { BUSINESS } from '@/data/content';
 
 const HEADLINE_WORDS = ['Specialists', 'in', 'Premium', 'Japanese', '&', 'American', 'Vehicles'];
 
+const HERO_FLAGSHIPS = [
+  {
+    name: 'Lexus LX 600',
+    title: 'Japanese Luxury Flagship',
+    origin: '🇯🇵 Japanese Excellence',
+    image: '/vehicles/lexus-lx600.jpg',
+  },
+  {
+    name: 'Cadillac Escalade',
+    title: 'American Luxury Flagship',
+    origin: '🇺🇸 American Luxury & Power',
+    image: '/vehicles/cadillac-escalade.jpg',
+  },
+];
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const [currentCarIndex, setCurrentCarIndex] = useState<number>(0);
+
+  // Smooth cinematic cross-fade between Japanese & American flagships every 7.5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentCarIndex((prev) => (prev + 1) % HERO_FLAGSHIPS.length);
+    }, 7500);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -15,25 +41,43 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const yText = useTransform(scrollYProgress, [0, 0.5], ['0%', '40%']);
 
+  const activeCar = HERO_FLAGSHIPS[currentCarIndex];
+
   return (
     <section ref={ref} id="top" className="relative h-screen min-h-[700px] overflow-hidden vignette">
-      {/* Background image with Ken Burns zoom */}
-      {/* REPLACE: Cinematic dark studio shot of a Lexus LX 600 and Cadillac Escalade side by side, dramatic lighting, Dubai night backdrop */}
+      {/* Background image with Ken Burns zoom & smooth flagship cross-fade */}
       <motion.div
         style={{ scale }}
-        className="absolute inset-0"
+        className="absolute inset-0 bg-obsidian"
       >
-        <img
-          src="https://images.pexels.com/photos/19067088/pexels-photo-19067088.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Premium luxury SUV in dark studio setting"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-obsidian" />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/60 via-transparent to-obsidian/30" />
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={activeCar.image}
+            src={activeCar.image}
+            alt={`${activeCar.name} in dark studio setting`}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
+            className="w-full h-full object-cover object-center absolute inset-0"
+          />
+        </AnimatePresence>
+
+        {/* Premium Dark Gradients for contrast and legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/75 via-obsidian/45 to-obsidian" />
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/70 via-transparent to-obsidian/40" />
       </motion.div>
 
       {/* Gold light leak glow */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Flagship Indicator Badge in Bottom Corner */}
+      <div className="absolute bottom-8 right-6 lg:right-10 z-20 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian/85 border border-gold/30 backdrop-blur-md shadow-xl">
+        <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+        <span className="text-xs font-sans text-ivory/90 font-medium">
+          {activeCar.origin}: <strong className="text-gold font-semibold">{activeCar.name}</strong>
+        </span>
+      </div>
 
       {/* Content */}
       <motion.div

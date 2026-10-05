@@ -1,4 +1,5 @@
-import { BadgeCheck, PackageCheck, ScanLine, ReceiptText, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { BadgeCheck, PackageCheck, ScanLine, ReceiptText, MapPin, ArrowRight } from 'lucide-react';
 import { WHY_CHOOSE_US, STATS, BUSINESS } from '@/data/content';
 import { SectionTitle, Reveal } from '@/components/ui/Primitives';
 
@@ -9,41 +10,47 @@ const iconMap: Record<string, typeof BadgeCheck> = {
 export default function WhyChooseUs() {
   return (
     <section id="why-us" className="relative py-24 lg:py-32 bg-charcoal overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: image */}
+          {/* Left: image with floating stat card */}
           <Reveal>
             <div className="relative">
-              {/* Main image */}
-              {/* REPLACE: Premium workshop interior — technician using diagnostic equipment on a Lexus LX, clean and well-lit */}
-              <div className="relative rounded-2xl overflow-hidden glass aspect-[4/5] lg:aspect-[3/4]">
+              {/* Main workshop image */}
+              <div className="relative rounded-2xl overflow-hidden glass border border-white/10 aspect-[4/5] lg:aspect-[3/4] shadow-2xl group">
                 <img
                   src="https://images.pexels.com/photos/6720502/pexels-photo-6720502.jpeg?auto=compress&cs=tinysrgb&w=1000"
                   alt="Technician using diagnostic computer in premium auto workshop"
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent" />
               </div>
 
-              {/* Floating stats card */}
-              <div className="absolute -bottom-6 -right-2 lg:-right-8 glass rounded-2xl p-6 shadow-xl">
+              {/* Floating luxury stats card with gentle breathing float animation */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -bottom-6 -right-2 lg:-right-8 glass rounded-2xl p-6 shadow-2xl border border-gold/30 bg-obsidian/90 backdrop-blur-xl"
+              >
                 <div className="grid grid-cols-2 gap-6">
                   {STATS.slice(0, 2).map((stat) => (
                     <div key={stat.label}>
-                      <div className="font-serif text-3xl text-gold-gradient">
+                      <div className="font-serif text-3xl font-bold text-gold-gradient tracking-tight">
                         {stat.value}{stat.suffix}
                       </div>
-                      <div className="text-[10px] uppercase tracking-wider text-muted mt-1">
+                      <div className="text-[10px] uppercase tracking-wider text-muted/90 font-sans mt-1 font-medium">
                         {stat.label}
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Decorative gold frame line */}
-              <div className="absolute -top-3 -left-3 w-24 h-24 border-t border-l border-gold/20 rounded-tl-2xl pointer-events-none" />
+              {/* Decorative gold frame line with subtle pulse */}
+              <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-gold/40 rounded-tl-2xl pointer-events-none shadow-sm shadow-gold/20" />
             </div>
           </Reveal>
 
@@ -60,15 +67,23 @@ export default function WhyChooseUs() {
                 const Icon = iconMap[item.icon] || BadgeCheck;
                 return (
                   <Reveal key={i} delay={i * 0.08}>
-                    <div className="group flex gap-5 items-start">
-                      <div className="w-11 h-11 rounded-full glass flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors duration-500">
-                        <Icon className="w-5 h-5 text-gold" strokeWidth={1.5} />
+                    <motion.div
+                      whileHover={{ x: 6 }}
+                      transition={{ duration: 0.25 }}
+                      className="group flex gap-5 items-start p-3 rounded-2xl transition-colors hover:bg-white/[0.02]"
+                    >
+                      <div className="w-12 h-12 rounded-xl glass border border-white/10 group-hover:border-gold/50 flex items-center justify-center shrink-0 group-hover:bg-gold/15 transition-all duration-300 shadow-lg">
+                        <Icon className="w-5 h-5 text-gold transition-transform duration-300 group-hover:scale-110" strokeWidth={1.7} />
                       </div>
                       <div>
-                        <h3 className="font-serif text-xl text-ivory mb-1.5">{item.title}</h3>
-                        <p className="text-sm text-muted font-sans leading-relaxed">{item.text}</p>
+                        <h3 className="font-serif text-xl text-ivory mb-1.5 font-semibold group-hover:text-gold-gradient transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted font-sans leading-relaxed">
+                          {item.text}
+                        </p>
                       </div>
-                    </div>
+                    </motion.div>
                   </Reveal>
                 );
               })}
@@ -78,9 +93,10 @@ export default function WhyChooseUs() {
                   href={BUSINESS.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-4 bg-gold-gradient text-obsidian font-semibold text-sm px-7 py-3.5 rounded-full hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 shimmer-line"
+                  className="group inline-flex items-center gap-2.5 mt-4 bg-gold-gradient text-obsidian font-semibold text-sm px-8 py-4 rounded-full shadow-xl shadow-gold/25 hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shimmer-line"
                 >
-                  Book Your Service
+                  <span>Book Your Service</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </Reveal>
             </div>
