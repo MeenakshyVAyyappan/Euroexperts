@@ -31,7 +31,7 @@ interface SectionTitleProps {
 
 export function SectionTitle({ eyebrow, title, subtitle, center }: SectionTitleProps) {
   return (
-    <div className={`mb-12 lg:mb-16 ${center ? 'text-center mx-auto max-w-3xl' : ''}`}>
+    <div className={`mb-8 lg:mb-10 ${center ? 'text-center mx-auto max-w-3xl' : ''}`}>
       <Reveal>
         <span className="eyebrow block mb-4">{eyebrow}</span>
       </Reveal>

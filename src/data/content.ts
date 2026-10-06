@@ -234,7 +234,7 @@ export const SERVICES: Service[] = [
   {
     icon: 'Cog',
     title: 'Engine Repair & Diagnostics',
-    description: 'Precision engine diagnostics, overhaul and repair using dealer-level tools for Japanese and American powertrains.',
+    description: 'Precision engine diagnostics, overhaul, and mechanical repair using advanced factory-grade diagnostic tools and OEM equipment.',
   },
   {
     icon: 'Settings2',
@@ -278,7 +278,7 @@ export const WHY_CHOOSE_US = [
   {
     icon: 'BadgeCheck',
     title: 'Certified Technicians',
-    text: 'Our technicians are specifically trained on Japanese and American vehicle platforms — not generalists.',
+    text: 'Our master technicians are brand-certified specialists equipped with advanced factory diagnostic systems — not generalists.',
   },
   {
     icon: 'PackageCheck',
@@ -333,9 +333,9 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     span: 'normal',
   },
   {
-    image: 'https://images.pexels.com/photos/6720502/pexels-photo-6720502.jpeg?auto=compress&cs=tinysrgb&w=800',
-    alt: 'Mechanic using diagnostic computer on vehicle',
-    comment: 'REPLACE: Technician running diagnostics on a Toyota Land Cruiser',
+    image: '/asian-master-technician.jpg',
+    alt: 'Master technician running computer diagnostics in Euro Experts workshop',
+    comment: 'Certified master technician running diagnostic scans',
     span: 'tall',
   },
   {

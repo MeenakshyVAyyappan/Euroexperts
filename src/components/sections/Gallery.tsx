@@ -16,8 +16,12 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="relative py-24 lg:py-32 bg-charcoal overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="gallery" className="relative py-12 lg:py-16 bg-[#181B26] overflow-hidden">
+      {/* Studio ambient lighting and warm radiant light pools */}
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(255,160,72,0.15)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-gold/10 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         <SectionTitle
           eyebrow="Workshop Gallery"
           title="Inside the Atelier"
@@ -34,23 +38,22 @@ export default function Gallery() {
               className={spanClasses[img.span || 'normal']}
             >
               <div
-                className="group relative w-full h-full rounded-xl overflow-hidden glass cursor-pointer"
+                className="group relative w-full h-full rounded-2xl overflow-hidden glass-card border border-white/18 hover:border-gold/60 transition-all duration-300 shadow-xl shadow-black/25 cursor-pointer"
                 onClick={() => setLightbox(i)}
                 data-cursor="hover"
               >
-                {/* REPLACE: ${img.comment} */}
                 <img
                   src={img.image}
                   alt={img.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover brightness-[1.06] transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141622]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <p className="text-xs font-sans text-ivory/90">{img.alt}</p>
+                  <p className="text-xs font-sans text-white font-medium">{img.alt}</p>
                 </div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <ZoomIn className="w-5 h-5 text-gold" strokeWidth={1.5} />
+                  <ZoomIn className="w-5 h-5 text-gold" strokeWidth={1.75} />
                 </div>
               </div>
             </Reveal>

@@ -107,7 +107,7 @@ export default function Preloader() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4, duration: 0.6 }}
             >
-              Nippon & Americana Division
+              Luxury & Performance Specialists
             </motion.div>
 
             {/* Loading bar */}

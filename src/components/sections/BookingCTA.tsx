@@ -15,8 +15,8 @@ interface FormData {
 }
 
 const inputClass =
-  'w-full bg-obsidian-light/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm font-sans text-ivory placeholder:text-muted/40 focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/25 transition-all duration-300 shadow-inner';
-const labelClass = 'block text-xs font-sans text-gold/90 uppercase tracking-wider mb-2 font-semibold';
+  'w-full bg-[#262A3B] border border-white/18 rounded-xl px-4 py-3.5 text-sm font-sans text-white placeholder:text-[#9098AA] focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 transition-all duration-300 shadow-inner';
+const labelClass = 'block text-xs font-sans text-gold uppercase tracking-wider mb-2 font-semibold';
 
 export default function BookingCTA() {
   const [form, setForm] = useState<FormData>({
@@ -33,12 +33,13 @@ export default function BookingCTA() {
   };
 
   return (
-    <section id="book" className="relative py-24 lg:py-32 bg-obsidian overflow-hidden">
-      {/* Ambient luxury radial gold pulse */}
+    <section id="book" className="relative py-12 lg:py-16 bg-[#151722] overflow-hidden">
+      {/* Studio ambient lighting and warm radiant light pools */}
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(255,160,72,0.18)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
       <motion.div
         animate={{
           scale: [1, 1.25, 1],
-          opacity: [0.08, 0.16, 0.08],
+          opacity: [0.10, 0.20, 0.10],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/15 rounded-full blur-[220px] pointer-events-none"
@@ -55,11 +56,11 @@ export default function BookingCTA() {
         <Reveal delay={0.2}>
           <div className="relative">
             {/* Ambient gold glow behind form */}
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gold/20 via-brand-orange/20 to-gold/20 opacity-50 blur-xl pointer-events-none" />
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gold/25 via-brand-orange/20 to-gold/25 opacity-60 blur-xl pointer-events-none" />
 
             <form
               onSubmit={handleSubmit}
-              className="relative glass rounded-3xl p-6 lg:p-10 space-y-6 border border-gold/30 bg-obsidian/90 backdrop-blur-2xl shadow-2xl"
+              className="relative rounded-3xl p-6 lg:p-10 space-y-6 border border-white/18 bg-[#1E2232]/95 backdrop-blur-2xl shadow-2xl shadow-black/40"
             >
               <div className="flex items-center gap-2 mb-2 pb-4 border-b border-white/10">
                 <Sparkles className="w-4 h-4 text-gold" />
@@ -176,7 +177,7 @@ export default function BookingCTA() {
                 <Send className="w-4 h-4" />
               </motion.button>
 
-              <p className="text-center text-xs text-muted/80 font-sans">
+              <p className="text-center text-xs text-[#B2B8C8] font-sans">
                 🔒 Your details are encrypted and sent directly to our service advisors. No spam, ever.
               </p>
             </form>

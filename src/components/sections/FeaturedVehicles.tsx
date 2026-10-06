@@ -75,13 +75,14 @@ export default function FeaturedVehicles() {
   }, [isHovered, scrollForward]);
 
   return (
-    <section id="featured" className="relative py-24 lg:py-32 bg-charcoal overflow-hidden">
-      {/* Subtle Ambient Glow */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
+    <section id="featured" className="relative py-12 lg:py-16 bg-[#181B26] overflow-hidden">
+      {/* Studio Ambient Illumination */}
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(255,160,72,0.15)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-gold/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
           <SectionTitle
             eyebrow="Featured Vehicles"
             title="Models We Know Intimately"
@@ -90,19 +91,19 @@ export default function FeaturedVehicles() {
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={scrollBackward}
-              className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-gold/15 hover:border-gold/40 transition-all cursor-pointer"
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md"
               aria-label="Scroll backward"
               title="Previous"
             >
-              <ArrowLeft className="w-5 h-5 text-gold" strokeWidth={1.5} />
+              <ArrowLeft className="w-5 h-5 transition-colors" strokeWidth={1.75} />
             </button>
             <button
               onClick={scrollForward}
-              className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-gold/15 hover:border-gold/40 transition-all cursor-pointer"
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md"
               aria-label="Scroll forward"
-              title="Next (Forward)"
+              title="Next"
             >
-              <ArrowRight className="w-5 h-5 text-gold" strokeWidth={1.5} />
+              <ArrowRight className="w-5 h-5 transition-colors" strokeWidth={1.75} />
             </button>
           </div>
         </div>
@@ -129,34 +130,34 @@ export default function FeaturedVehicles() {
             data-cursor="hover"
           >
             {/* Image Card */}
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden glass border border-white/10 group-hover:border-gold/40 transition-all duration-500 shadow-xl group-hover:shadow-gold/15">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden glass-card border border-white/18 group-hover:border-gold/60 transition-all duration-500 shadow-2xl shadow-black/30 group-hover:shadow-gold/20">
               <img
                 src={vehicle.image}
                 alt={vehicle.name}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                className="w-full h-full object-cover brightness-[1.07] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141622]/90 via-[#141622]/25 to-transparent" />
 
               {/* Region badge */}
               <div className="absolute top-4 left-4">
                 <span
-                  className="text-[10px] uppercase tracking-[0.2em] font-sans px-3 py-1 rounded-full glass text-ivory border border-white/10 backdrop-blur-md"
+                  className="text-[10px] uppercase tracking-[0.2em] font-sans px-3.5 py-1.5 rounded-full bg-[#181A26]/85 text-white border border-white/20 backdrop-blur-md font-medium shadow-md"
                   style={{
-                    borderLeft: `3px solid ${vehicle.region === 'Japan' ? '#FF6200' : '#FFA048'}`,
+                    borderLeft: `3px solid #FF6200`,
                   }}
                 >
-                  {vehicle.region === 'Japan' ? 'Japanese' : 'American'}
+                  Specialist Care
                 </span>
               </div>
 
               {/* Content overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                 <span className="eyebrow text-gold mb-1 block">{vehicle.brand}</span>
-                <h3 className="font-serif text-2xl lg:text-3xl text-ivory mb-2 group-hover:text-gold-gradient transition-all duration-300">
+                <h3 className="font-serif text-2xl lg:text-3xl text-white mb-2 group-hover:text-gold-gradient transition-all duration-300">
                   {vehicle.name}
                 </h3>
-                <p className="text-sm text-muted font-sans mb-4 leading-relaxed line-clamp-2">
+                <p className="text-sm text-[#B2B8C8] font-sans mb-4 leading-relaxed line-clamp-2">
                   {vehicle.note}
                 </p>
                 <div className="flex items-center justify-between">
@@ -164,7 +165,7 @@ export default function FeaturedVehicles() {
                     href={`${BUSINESS.whatsappLink}?text=${encodeURIComponent(`I'd like to book a service for my ${vehicle.name}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-sans text-gold border-b border-gold/30 hover:border-gold transition-all pb-0.5"
+                    className="inline-flex items-center gap-1.5 text-xs font-sans text-gold font-semibold border-b border-gold/40 hover:border-gold transition-all pb-0.5"
                   >
                     <span>Book this service</span>
                     <span>→</span>
@@ -180,7 +181,7 @@ export default function FeaturedVehicles() {
                         region: vehicle.region.toLowerCase() as 'japan' | 'america',
                       })
                     }
-                    className="text-[11px] font-sans text-ivory/70 hover:text-white px-2.5 py-1 rounded-md bg-white/5 hover:bg-gold/20 border border-white/10 transition-colors cursor-pointer"
+                    className="text-[11px] font-sans text-white/90 hover:text-white px-3 py-1.5 rounded-lg bg-white/10 hover:bg-gold/25 border border-white/20 transition-all cursor-pointer font-medium"
                   >
                     Quick View ↗
                   </button>

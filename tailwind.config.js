@@ -4,9 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: '#0A0A0B',
-        charcoal: '#141416',
-        'charcoal-light': '#1C1C20',
+        obsidian: {
+          DEFAULT: '#14161F',
+          light: '#1F222E',
+          dark: '#0E1017',
+        },
+        'obsidian-light': '#1F222E',
+        charcoal: {
+          DEFAULT: '#1A1D28',
+          light: '#252938',
+        },
+        'charcoal-light': '#252938',
+        titanium: '#2D3242',
         gold: {
           DEFAULT: '#FF6200',
           light: '#FFA048',
@@ -18,8 +27,8 @@ export default {
           dark: '#D84500',
           glow: 'rgba(255, 98, 0, 0.28)',
         },
-        ivory: '#F4F1EA',
-        muted: '#8A8A8F',
+        ivory: '#FAF9F5',
+        muted: '#B0B5C4',
         japan: '#B3121B',
         america: '#1C2E4A',
       },

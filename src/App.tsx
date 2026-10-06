@@ -22,7 +22,7 @@ import { BUSINESS } from '@/data/content';
 function App() {
   useEffect(() => {
     // SEO: Set document title and meta description
-    document.title = 'Premium Japanese & American Car Service in Dubai | Nippon & Americana Auto';
+    document.title = 'Euro Experts Auto Services | Premier Luxury & Performance Car Workshop Dubai';
 
     const setMeta = (name: string, content: string, attr: 'name' | 'property' = 'name') => {
       let tag = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -34,17 +34,17 @@ function App() {
       tag.setAttribute('content', content);
     };
 
-    setMeta('description', 'Dealership-level service for premium Japanese & American vehicles in Dubai. Lexus, Land Cruiser, Patrol, Escalade, Yukon Denali and more. Certified technicians, genuine parts, precision diagnostics.');
-    setMeta('og:title', 'Premium Japanese & American Car Service in Dubai', 'property');
-    setMeta('og:description', 'Specialists in premium Japanese & American vehicles. Certified technicians, genuine parts, precision diagnostics in Dubai.', 'property');
+    setMeta('description', 'Dealership-level auto service and specialist repair in Al Quoz, Dubai. Certified master technicians, genuine OEM parts, advanced computer diagnostics for Lexus, Land Cruiser, Patrol, Escalade, Yukon, Mustang, Corvette and more.');
+    setMeta('og:title', 'Euro Experts Auto Services | Premier Auto Workshop Dubai', 'property');
+    setMeta('og:description', 'Dealership-level auto service in Al Quoz, Dubai. Certified technicians, genuine parts, precision diagnostics.', 'property');
     setMeta('og:type', 'website', 'property');
 
     // SEO: LocalBusiness / AutoRepair schema
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'AutoRepair',
-      name: 'Nippon & Americana Auto by Euro Experts Auto Services',
-      description: 'Specialists in premium Japanese & American vehicle service and repair in Dubai.',
+      name: 'Euro Experts Auto Services LLC',
+      description: 'Specialist automotive workshop for luxury, performance, and premier vehicle service and repair in Dubai.',
       telephone: BUSINESS.phone1,
       email: BUSINESS.email,
       address: {

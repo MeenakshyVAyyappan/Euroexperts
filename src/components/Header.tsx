@@ -26,7 +26,7 @@ export default function Header() {
         animate={{ y: 0 }}
         transition={{ delay: 3, duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled ? 'glass-dark border-b border-gold/10 py-3' : 'bg-transparent py-5'
+          scrolled ? 'glass-dark border-b border-white/10 py-3 shadow-xl' : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
@@ -37,24 +37,17 @@ export default function Header() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 group"
-            aria-label="Euro Experts - Nippon & Americana Auto"
+            className="flex items-center group py-1"
+            aria-label="Euro Experts Auto Services"
           >
-            <div className="relative w-10 h-10 lg:w-11 lg:h-11 rounded-full glass border border-brand-orange/30 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:scale-105 group-hover:border-brand-orange/60 shadow-sm shadow-brand-orange/10">
-              <img
-                src="/favicon.webp"
-                alt="Euro Experts Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_1px_4px_rgba(255,90,31,0.35)]"
-              />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="font-serif text-lg lg:text-xl text-ivory tracking-tight group-hover:text-gold transition-colors">
-                Nippon <span className="text-gold-gradient">&</span> Americana
-              </span>
-              <span className="text-[9px] lg:text-[10px] uppercase tracking-[0.22em] text-muted mt-1 flex items-center gap-1">
-                by <span className="text-brand-orange font-semibold tracking-wider">EURO EXPERTS</span>
-              </span>
-            </div>
+            <img
+              src="/euroexpert-logo.webp"
+              alt="Euro Experts Auto Services"
+              className="h-10 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.src = '/euroexpert-logo.png';
+              }}
+            />
           </a>
 
           {/* Desktop nav */}
@@ -63,7 +56,7 @@ export default function Header() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm font-sans text-ivory/80 hover:text-gold transition-colors duration-300 relative group"
+                className="text-sm font-sans text-white/90 hover:text-gold transition-colors duration-300 relative group font-medium cursor-pointer"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
@@ -77,12 +70,12 @@ export default function Header() {
               href={BUSINESS.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center bg-gold-gradient text-obsidian font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 shimmer-line"
+              className="hidden lg:inline-flex items-center bg-gold-gradient text-obsidian font-bold text-xs px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-gold/25 transition-all duration-300 shimmer-line"
             >
               Book Service
             </a>
             <button
-              className="lg:hidden text-ivory"
+              className="lg:hidden text-white p-1"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
@@ -99,7 +92,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 glass-dark flex flex-col items-center justify-center gap-6"
+            className="fixed inset-0 z-50 bg-[#161824]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-6"
           >
             <button
               className="absolute top-6 right-6 text-ivory"
