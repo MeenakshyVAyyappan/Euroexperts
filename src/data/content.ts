@@ -356,8 +356,8 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     image: '/gallery-ford-raptor.jpg',
-    alt: 'Ford F-150 Raptor FOX Live Valve suspension service and off-road inspection',
-    comment: 'Ford F-150 Raptor high-performance suspension service',
+    alt: 'Ford F-150 Raptor R performance atelier service alongside GMC Yukon Denali in Euro Experts workshop',
+    comment: 'Ford F-150 Raptor R & American specialist bay in Euro Experts atelier',
     span: 'normal',
   },
   {
