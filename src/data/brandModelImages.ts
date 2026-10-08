@@ -103,13 +103,13 @@ export const MODEL_IMAGES: Record<string, Record<string, string>> = {
     'Bronco Raptor': 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
   },
   Chevrolet: {
-    'Tahoe': 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
-    'Suburban': 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
+    'Tahoe': '/vehicles/chevrolet-tahoe.jpg',
+    'Suburban': '/vehicles/chevrolet-tahoe.jpg',
     'Corvette': '/vehicles/chevrolet-corvette.jpg',
     'Corvette Z06': '/vehicles/chevrolet-corvette.jpg',
-    'Silverado': 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
-    'Camaro': 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80',
-    'Blazer': '/vehicles/chevrolet-corvette.jpg',
+    'Silverado': '/vehicles/chevrolet-tahoe.jpg',
+    'Camaro': '/vehicles/chevrolet-corvette.jpg',
+    'Blazer': '/vehicles/chevrolet-tahoe.jpg',
   },
   Jeep: {
     'Grand Wagoneer': '/vehicles/jeep-grand-wagoneer.jpg',

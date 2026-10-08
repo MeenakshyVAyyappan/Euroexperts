@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
               <div className="relative rounded-2xl overflow-hidden glass-card border border-white/18 aspect-[4/5] lg:aspect-[3/4] shadow-2xl group">
                 <img
                   src="/asian-master-technician.jpg"
-                  alt="Certified Asian master technician using diagnostic computer in Euro Experts workshop"
+                  alt="Certified master technician running diagnostic telemetry with Lexus LX 600 in Euro Experts workshop"
                   loading="lazy"
                   className="w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
                 />

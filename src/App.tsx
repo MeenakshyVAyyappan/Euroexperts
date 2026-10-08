@@ -38,6 +38,9 @@ function App() {
     setMeta('og:title', 'Euro Experts Auto Services | Premier Auto Workshop Dubai', 'property');
     setMeta('og:description', 'Dealership-level auto service in Al Quoz, Dubai. Certified technicians, genuine parts, precision diagnostics.', 'property');
     setMeta('og:type', 'website', 'property');
+    setMeta('og:site_name', 'Euro Experts Auto Services LLC', 'property');
+    setMeta('og:image', '/euroexpert-official-logo.png', 'property');
+    setMeta('twitter:image', '/euroexpert-official-logo.png', 'name');
 
     // SEO: LocalBusiness / AutoRepair schema
     const schema = {

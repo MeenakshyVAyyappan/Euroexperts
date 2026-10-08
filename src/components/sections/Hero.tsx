@@ -3,20 +3,20 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { MessageCircle, Phone, ChevronDown, Sparkles } from 'lucide-react';
 import { BUSINESS } from '@/data/content';
 
-const HEADLINE_WORDS = ['Specialists', 'in', 'Luxury', '&', 'Performance', 'Vehicles'];
+const HEADLINE_WORDS = ['Specialists', 'in', 'Premium', 'Japanese', '&', 'American', 'Vehicles'];
 
 const HERO_WORKSHOP_SLIDES = [
   {
-    name: 'State-of-the-Art Service Bays',
-    title: 'Premier Workshop Atelier',
+    name: 'Lexus LX 600, LC 300 & Patrol Service Bays',
+    title: 'Japanese Luxury Atelier',
     origin: 'Euro Experts Facility',
-    image: '/hero-workshop-atelier.jpg',
+    image: '/hero-workshop-japanese.jpg',
   },
   {
-    name: 'Precision Computer Diagnostics',
-    title: 'Master Diagnostic Station',
+    name: 'Cadillac Escalade, Yukon & Raptor Diagnostic Bays',
+    title: 'American Specialist Bay',
     origin: 'Advanced Diagnostic Bay',
-    image: '/hero-workshop-diagnostics.jpg',
+    image: '/hero-workshop-american.jpg',
   },
 ];
 
@@ -191,6 +191,24 @@ export default function Hero() {
         >
           Dealership-level maintenance and repair for Lexus, Land Cruiser, Patrol, Escalade, Yukon, Mustang and premier marques — certified master technicians, genuine OEM parts, precision diagnostics in Al Quoz, Dubai.
         </motion.p>
+
+        {/* Client-specified brand positioning strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 4.18, duration: 0.6 }}
+          className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#EDE9E1]/90 font-sans [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-gold font-semibold uppercase tracking-wider text-[10px] sm:text-[11px] bg-white/[0.06] border border-gold/30 px-2 py-0.5 rounded-full">Japanese</span>
+            <span className="text-white/95 font-medium">Lexus · Toyota · Infiniti · Nissan · Acura · Honda</span>
+          </div>
+          <span className="hidden sm:inline text-gold/40">|</span>
+          <div className="flex items-center gap-2">
+            <span className="text-gold font-semibold uppercase tracking-wider text-[10px] sm:text-[11px] bg-white/[0.06] border border-gold/30 px-2 py-0.5 rounded-full">American</span>
+            <span className="text-white/95 font-medium">Cadillac · Lincoln · GMC · Ford · Chevrolet · Jeep · Dodge</span>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
