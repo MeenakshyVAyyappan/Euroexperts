@@ -16,9 +16,9 @@ import { VehiclePreviewModal } from '@/components/ui/VehiclePreviewModal';
 type Region = 'japanese' | 'american';
 
 export default function BrandSwitcher() {
-  const [region, setRegion] = useState<Region>('american'); // Default to American (or Japanese), matching Screenshot 1 (Dodge)
-  const [selectedBrandIndex, setSelectedBrandIndex] = useState<number>(6); // Index 6 is Dodge under American (matching Screenshot 1)
-  const [selectedModelIndex, setSelectedModelIndex] = useState<number>(0); // Index 0 is Challenger
+  const [region, setRegion] = useState<Region>('japanese'); // Default to Japanese (Lexus)
+  const [selectedBrandIndex, setSelectedBrandIndex] = useState<number>(0); // Index 0 is Lexus
+  const [selectedModelIndex, setSelectedModelIndex] = useState<number>(0); // Default to first model (LX 600)
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [previewVehicle, setPreviewVehicle] = useState<{
     brand: string;
@@ -247,7 +247,7 @@ export default function BrandSwitcher() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.42fr_1fr] gap-8 lg:gap-14 items-center">
           {/* Left Column: Car Showroom Image */}
           <div
-            className="group relative aspect-[16/10] sm:aspect-[1.7/1] bg-gradient-to-br from-[#25293A] via-[#1E212E] to-[#171924] rounded-2xl overflow-hidden border border-white/18 shadow-2xl shadow-black/40 transition-all duration-300"
+            className="group relative aspect-[16/10] sm:aspect-[1376/768] bg-gradient-to-br from-[#25293A] via-[#1E212E] to-[#171924] rounded-2xl overflow-hidden border border-white/18 shadow-2xl shadow-black/40 transition-all duration-300"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
@@ -258,28 +258,43 @@ export default function BrandSwitcher() {
               </span>
             </div>
 
+            {/* Loading placeholder skeleton shimmer */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-[#1A1D2B] flex items-center justify-center pointer-events-none">
+                <div className="w-8 h-8 rounded-full border-2 border-gold/30 border-t-gold animate-spin" />
+              </div>
+            )}
+
             {/* Car Photo with smooth crossfade and crisp studio brightness */}
             <AnimatePresence mode="wait">
               <motion.img
                 key={`${currentBrand.name}-${currentModel.name}`}
                 src={primaryImageUrl}
                 alt={`${currentBrand.name} ${currentModel.name}`}
-                initial={{ opacity: 0, scale: 1.03 }}
+                initial={{ opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 onLoad={() => setImageLoaded(true)}
-                onError={(e) => {
-                  // Fallback to local high-res image
-                  const target = e.currentTarget;
-                  if (target.src !== fallbackImageUrl) {
-                    target.src = fallbackImageUrl;
+                ref={(img) => {
+                  if (img?.complete && img.naturalWidth > 0 && !imageLoaded) {
+                    setImageLoaded(true);
                   }
+                }}
+                onError={(e) => {
+                  // Fallback to default brand vehicle image if model fails
+                  const target = e.currentTarget;
+                  const defaultImg = BRAND_DEFAULT_IMAGES[currentBrand.name] || '/vehicles/Lexus/lx600.jpg';
+                  if (!target.src.endsWith(defaultImg)) {
+                    target.src = defaultImg;
+                  }
+                  setImageLoaded(true);
                 }}
                 className={`w-full h-full object-cover brightness-[1.08] contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-700 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 loading="eager"
+                decoding="async"
               />
             </AnimatePresence>
 

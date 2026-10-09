@@ -15,6 +15,11 @@ const INFINITE_VEHICLES = [
 export default function FeaturedVehicles() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const dragStartXRef = useRef(0);
+  const dragScrollLeftRef = useRef(0);
+  const hasDraggedRef = useRef(false);
 
   // Vehicle Preview Modal state
   const [previewVehicle, setPreviewVehicle] = useState<{
@@ -24,55 +29,120 @@ export default function FeaturedVehicles() {
     region: 'japan' | 'america';
   } | null>(null);
 
-  // Initialize track to the middle set on load for seamless forward scrolling
+  // Compute exact card width + gap dynamically
+  const getCardStep = useCallback(() => {
+    if (!trackRef.current) return 444;
+    const firstCard = trackRef.current.querySelector('article');
+    if (firstCard) {
+      return (firstCard as HTMLElement).offsetWidth + 24; // 24px is gap-6
+    }
+    return trackRef.current.clientWidth > 768 ? 444 : 324;
+  }, []);
+
+  // Initialize track to the middle set on load for seamless infinite scrolling in both directions
   useEffect(() => {
-    if (!trackRef.current) return;
-    const oneThird = trackRef.current.scrollWidth / 3;
-    if (oneThird > 0) {
-      trackRef.current.scrollLeft = oneThird;
-    }
+    const track = trackRef.current;
+    if (!track) return;
+
+    const initScroll = () => {
+      const oneThird = track.scrollWidth / 3;
+      if (oneThird > 0) {
+        track.scrollLeft = oneThird;
+      }
+    };
+
+    // Run immediately and after layout settles
+    initScroll();
+    const timeout = setTimeout(initScroll, 100);
+    return () => clearTimeout(timeout);
   }, []);
 
-  // Forward scroll (smooth forward carousel motion)
-  const scrollForward = useCallback(() => {
-    if (!trackRef.current) return;
-    const { scrollLeft, scrollWidth } = trackRef.current;
-    const cardWidth = trackRef.current.clientWidth > 768 ? 440 : 320;
+  // Forward scroll (Next button: advances carousel to the right to reveal next vehicles)
+  const scrollNext = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const { scrollLeft, scrollWidth } = track;
     const oneThird = scrollWidth / 3;
+    const step = getCardStep();
 
-    // If approaching the beginning, wrap forward to the middle set seamlessly
-    if (scrollLeft <= cardWidth * 1.5) {
-      trackRef.current.scrollLeft = scrollLeft + oneThird;
+    // If approaching the end of the middle set, teleport back to identical position in set 1
+    if (scrollLeft >= oneThird * 2 - step) {
+      track.scrollLeft = scrollLeft - oneThird;
     }
 
-    trackRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-  }, []);
+    track.scrollBy({ left: step, behavior: 'smooth' });
+  }, [getCardStep]);
 
-  // Backward scroll for previous button
-  const scrollBackward = useCallback(() => {
-    if (!trackRef.current) return;
-    const { scrollLeft, scrollWidth } = trackRef.current;
-    const cardWidth = trackRef.current.clientWidth > 768 ? 440 : 320;
+  // Backward scroll (Prev button: moves carousel to the left to reveal previous vehicles)
+  const scrollPrev = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const { scrollLeft, scrollWidth } = track;
     const oneThird = scrollWidth / 3;
+    const step = getCardStep();
 
-    // If approaching the end, wrap backward to the middle set seamlessly
-    if (scrollLeft >= oneThird * 2 - cardWidth * 1.5) {
-      trackRef.current.scrollLeft = scrollLeft - oneThird;
+    // If approaching the beginning of the middle set, teleport forward to identical position in set 3
+    if (scrollLeft <= oneThird + step) {
+      track.scrollLeft = scrollLeft + oneThird;
     }
 
-    trackRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
-  }, []);
+    track.scrollBy({ left: -step, behavior: 'smooth' });
+  }, [getCardStep]);
 
-  // Auto-scroll forward on interval (paused on hover / touch)
+  // Auto-scroll forward on interval (paused on hover / touch / drag)
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || isDragging) return;
 
     const interval = setInterval(() => {
-      scrollForward();
-    }, 3200);
+      scrollNext();
+    }, 3500);
 
     return () => clearInterval(interval);
-  }, [isHovered, scrollForward]);
+  }, [isHovered, isDragging, scrollNext]);
+
+  // Handle manual scroll wrapping (for trackpad, wheel, or momentum swipes)
+  const handleScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const { scrollLeft, scrollWidth } = track;
+    if (scrollWidth === 0) return;
+    const oneThird = scrollWidth / 3;
+
+    // Boundary wrap protection when scrolled far past edges
+    if (scrollLeft >= oneThird * 2.4) {
+      track.scrollLeft = scrollLeft - oneThird;
+    } else if (scrollLeft <= oneThird * 0.1) {
+      track.scrollLeft = scrollLeft + oneThird;
+    }
+  }, []);
+
+  // Mouse Drag to Scroll handlers
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    setIsDragging(true);
+    hasDraggedRef.current = false;
+    dragStartXRef.current = e.pageX - track.offsetLeft;
+    dragScrollLeftRef.current = track.scrollLeft;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - trackRef.current.offsetLeft;
+    const walk = (x - dragStartXRef.current) * 1.2;
+    if (Math.abs(walk) > 6) {
+      hasDraggedRef.current = true;
+    }
+    trackRef.current.scrollLeft = dragScrollLeftRef.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
 
   return (
     <section id="featured" className="relative py-12 lg:py-16 bg-[#181B26] overflow-hidden">
@@ -90,18 +160,18 @@ export default function FeaturedVehicles() {
           />
           <div className="flex items-center gap-3 shrink-0">
             <button
-              onClick={scrollBackward}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md"
-              aria-label="Scroll backward"
-              title="Previous"
+              onClick={scrollPrev}
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md active:scale-95"
+              aria-label="Previous vehicles"
+              title="Previous vehicles"
             >
               <ArrowLeft className="w-5 h-5 transition-colors" strokeWidth={1.75} />
             </button>
             <button
-              onClick={scrollForward}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md"
-              aria-label="Scroll forward"
-              title="Next"
+              onClick={scrollNext}
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all cursor-pointer shadow-lg backdrop-blur-md active:scale-95"
+              aria-label="Next vehicles"
+              title="Next vehicles"
             >
               <ArrowRight className="w-5 h-5 transition-colors" strokeWidth={1.75} />
             </button>
@@ -109,15 +179,24 @@ export default function FeaturedVehicles() {
         </div>
       </div>
 
-      {/* Auto-Scroll Forward Carousel Track */}
+      {/* Auto-Scroll Carousel Track */}
       <div
         ref={trackRef}
+        onScroll={handleScroll}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          handleMouseUpOrLeave();
+        }}
         onTouchStart={() => setIsHovered(true)}
         onTouchEnd={() => setIsHovered(false)}
-        className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 lg:px-10 pb-6 scroll-smooth cursor-grab active:cursor-grabbing"
-        style={{ scrollPaddingLeft: '2.5rem', scrollBehavior: 'smooth' }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        className={`flex gap-6 overflow-x-auto no-scrollbar px-6 lg:px-10 pb-6 select-none ${
+          isDragging ? 'cursor-grabbing' : 'cursor-grab'
+        }`}
+        style={{ scrollPaddingLeft: '2.5rem' }}
       >
         {INFINITE_VEHICLES.map((vehicle, i) => (
           <motion.article
@@ -126,7 +205,7 @@ export default function FeaturedVehicles() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: (i % 6) * 0.04, duration: 0.5 }}
-            className="group relative shrink-0 w-[300px] sm:w-[360px] lg:w-[420px] snap-start"
+            className="group relative shrink-0 w-[300px] sm:w-[360px] lg:w-[420px]"
             data-cursor="hover"
           >
             {/* Image Card */}
@@ -135,12 +214,13 @@ export default function FeaturedVehicles() {
                 src={vehicle.image}
                 alt={vehicle.name}
                 loading="lazy"
-                className="w-full h-full object-cover brightness-[1.07] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
+                draggable={false}
+                className="w-full h-full object-cover brightness-[1.07] contrast-[1.04] transition-transform duration-700 group-hover:scale-105 pointer-events-none"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141622]/90 via-[#141622]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141622]/90 via-[#141622]/25 to-transparent pointer-events-none" />
 
               {/* Region badge */}
-              <div className="absolute top-4 left-4">
+              <div className="absolute top-4 left-4 pointer-events-none">
                 <span
                   className="text-[10px] uppercase tracking-[0.2em] font-sans px-3.5 py-1.5 rounded-full bg-[#181A26]/85 text-white border border-white/20 backdrop-blur-md font-medium shadow-md"
                   style={{
@@ -165,6 +245,11 @@ export default function FeaturedVehicles() {
                     href={`${BUSINESS.whatsappLink}?text=${encodeURIComponent(`I'd like to book a service for my ${vehicle.name}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => {
+                      if (hasDraggedRef.current) {
+                        e.preventDefault();
+                      }
+                    }}
                     className="inline-flex items-center gap-1.5 text-xs font-sans text-gold font-semibold border-b border-gold/40 hover:border-gold transition-all pb-0.5"
                   >
                     <span>Book this service</span>
@@ -173,14 +258,15 @@ export default function FeaturedVehicles() {
 
                   <button
                     type="button"
-                    onClick={() =>
+                    onClick={() => {
+                      if (hasDraggedRef.current) return;
                       setPreviewVehicle({
                         brand: vehicle.brand,
                         model: vehicle.name.replace(vehicle.brand, '').trim() || vehicle.name,
                         image: vehicle.image,
                         region: vehicle.region.toLowerCase() as 'japan' | 'america',
-                      })
-                    }
+                      });
+                    }}
                     className="text-[11px] font-sans text-white/90 hover:text-white px-3 py-1.5 rounded-lg bg-white/10 hover:bg-gold/25 border border-white/20 transition-all cursor-pointer font-medium"
                   >
                     Quick View ↗

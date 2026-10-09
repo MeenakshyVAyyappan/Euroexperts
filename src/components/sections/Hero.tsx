@@ -44,7 +44,7 @@ export default function Hero() {
   const activeSlide = HERO_WORKSHOP_SLIDES[currentSlideIndex];
 
   return (
-    <section ref={ref} id="top" className="relative h-screen min-h-[720px] overflow-hidden bg-[#0F1012]">
+    <section ref={ref} id="top" className="relative min-h-screen lg:min-h-[820px] xl:min-h-[860px] flex flex-col justify-center overflow-hidden bg-[#0F1012]">
       {/* Background Workshop Atelier Image with studio illumination and smooth cinematic motion */}
       <motion.div
         style={{ scale }}
@@ -97,7 +97,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity, y: yText }}
-        className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-6xl mx-auto"
+        className="relative z-10 w-full flex-1 flex flex-col items-center justify-center text-center px-6 max-w-6xl mx-auto pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24"
       >
         {/* Ultra-Premium Animated Workshop Badge */}
         <motion.div
@@ -105,7 +105,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ scale: 1.03, y: -2 }}
-          className="group relative inline-flex items-center mb-7 cursor-default"
+          className="group relative inline-flex items-center mb-6 sm:mb-7 cursor-default"
         >
           {/* 1. Ambient pulsing atmospheric aura */}
           <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-gold/30 via-amber-500/20 to-gold/30 blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse pointer-events-none" />
@@ -163,7 +163,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Main Headline with layered drop-shadows and text-shadow for crystal clarity */}
-        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] tracking-tight max-w-5xl [text-shadow:_0_4px_24px_rgba(0,0,0,0.95),_0_8px_48px_rgba(0,0,0,0.9)]">
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white leading-[1.08] tracking-tight max-w-5xl [text-shadow:_0_4px_24px_rgba(0,0,0,0.95),_0_8px_48px_rgba(0,0,0,0.9)]">
           {HEADLINE_WORDS.map((word, i) => (
             <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
               <motion.span
@@ -187,7 +187,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 4, duration: 0.6 }}
-          className="mt-6 max-w-2xl sm:max-w-3xl text-[#EDE9E1] font-sans text-sm sm:text-base lg:text-lg leading-relaxed font-normal [text-shadow:_0_2px_14px_rgba(0,0,0,0.95),_0_6px_30px_rgba(0,0,0,0.9)]"
+          className="mt-5 sm:mt-6 max-w-2xl sm:max-w-3xl text-[#EDE9E1] font-sans text-sm sm:text-base lg:text-lg leading-relaxed font-normal [text-shadow:_0_2px_14px_rgba(0,0,0,0.95),_0_6px_30px_rgba(0,0,0,0.9)]"
         >
           Dealership-level maintenance and repair for Lexus, Land Cruiser, Patrol, Escalade, Yukon, Mustang and premier marques — certified master technicians, genuine OEM parts, precision diagnostics in Al Quoz, Dubai.
         </motion.p>
@@ -197,7 +197,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 4.18, duration: 0.6 }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#EDE9E1]/90 font-sans [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]"
+          className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#EDE9E1]/90 font-sans [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]"
         >
           <div className="flex items-center gap-2">
             <span className="text-gold font-semibold uppercase tracking-wider text-[10px] sm:text-[11px] bg-white/[0.06] border border-gold/30 px-2 py-0.5 rounded-full">Japanese</span>
@@ -214,7 +214,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 4.3, duration: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4"
         >
           <a
             href={BUSINESS.whatsappLink}
@@ -238,14 +238,14 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-1.5 pointer-events-none"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-ivory/70 font-medium">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         >
-          <ChevronDown className="w-5 h-5 text-gold" strokeWidth={1.5} />
+          <ChevronDown className="w-4 h-4 text-gold" strokeWidth={1.5} />
         </motion.div>
       </motion.div>
     </section>

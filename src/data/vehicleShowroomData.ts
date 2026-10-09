@@ -31,15 +31,16 @@ export const SHOWROOM_JAPANESE_BRANDS: ShowroomBrand[] = [
     note: 'Japanese refinement. Specialist attention.',
     models: [
       { name: 'LX 600', imageKey: 'lexus-lx600', family: 'Lexus LX', type: 'SUV' },
-      { name: 'LX 570', imageKey: 'lexus-lx600', family: 'Lexus LX', type: 'SUV' },
-      { name: 'GX 460', imageKey: 'lexus-gx', family: 'Lexus GX', type: 'SUV' },
-      { name: 'GX 550', imageKey: 'lexus-gx', family: 'Lexus GX', type: 'SUV' },
+      { name: 'LX 570', imageKey: 'lexus-lx570', family: 'Lexus LX', type: 'SUV' },
+      { name: 'GX 460', imageKey: 'lexus-gx460', family: 'Lexus GX', type: 'SUV' },
+      { name: 'GX 550', imageKey: 'lexus-gx550', family: 'Lexus GX', type: 'SUV' },
       { name: 'RX 350', imageKey: 'lexus-rx350', family: 'Lexus RX', type: 'SUV' },
       { name: 'RX 500h', imageKey: 'lexus-rx500h', family: 'Lexus RX', type: 'SUV' },
-      { name: 'NX', imageKey: 'lexus-nx350', family: 'Lexus NX', type: 'SUV' },
+      { name: 'NX', imageKey: 'lexus-nx300', family: 'Lexus NX', type: 'SUV' },
       { name: 'ES 350', imageKey: 'lexus-es350', family: 'Lexus ES', type: 'Sedan' },
-      { name: 'LS 500', imageKey: 'lexus-ls', family: 'Lexus LS', type: 'Sedan' },
-      { name: 'IS 350', imageKey: 'lexus-is', family: 'Lexus IS', type: 'Sedan' },
+      { name: 'LS 500', imageKey: 'lexus-ls500', family: 'Lexus LS', type: 'Sedan' },
+      { name: 'LS 350', imageKey: 'lexus-ls350', family: 'Lexus LS', type: 'Sedan' },
+      { name: 'IS 350', imageKey: 'lexus-is350', family: 'Lexus IS', type: 'Sedan' },
       { name: 'LC 500', imageKey: 'lexus-lc500', family: 'Lexus LC', type: 'Performance' },
     ],
   },
@@ -184,10 +185,7 @@ export const SHOWROOM_AMERICAN_BRANDS: ShowroomBrand[] = [
   },
 ];
 
-// Helper to resolve the best image URL for a model
+// Helper to resolve the best image URL for a model (uses ultra-fast local vehicle images)
 export function resolveShowroomImage(brandName: string, model: ShowroomModel): string {
-  if (model.imageKey) {
-    return `https://euro-experts.vercel.app/media/${model.imageKey}.webp`;
-  }
   return getVehicleImage(brandName, model.name);
 }

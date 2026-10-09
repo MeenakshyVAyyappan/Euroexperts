@@ -26,7 +26,9 @@ export default function Header() {
         animate={{ y: 0 }}
         transition={{ delay: 3, duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled ? 'glass-dark border-b border-white/10 py-3 shadow-xl' : 'bg-transparent py-5'
+          scrolled
+            ? 'glass-dark border-b border-white/10 py-3 shadow-xl'
+            : 'bg-gradient-to-b from-[#0F1118]/90 via-[#0F1118]/40 to-transparent py-4 lg:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
@@ -51,12 +53,12 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-8 px-6 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md shadow-lg shadow-black/20">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm font-sans text-white/90 hover:text-gold transition-colors duration-300 relative group font-medium cursor-pointer"
+                className="text-xs xl:text-sm font-sans text-white/90 hover:text-gold transition-colors duration-300 relative group font-medium cursor-pointer tracking-wide"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
