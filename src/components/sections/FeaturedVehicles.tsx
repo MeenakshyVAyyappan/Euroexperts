@@ -156,7 +156,7 @@ export default function FeaturedVehicles() {
           <SectionTitle
             eyebrow="Featured Vehicles"
             title="Models We Know Intimately"
-            subtitle="From the desert-proven Land Cruiser to the commanding Escalade — every vehicle receives the same meticulous, dealership-level attention."
+            subtitle="From the commanding Cadillac Escalade and GMC Yukon Denali to the legendary Land Cruiser and Lexus LX 600 — every vehicle receives the same meticulous, dealership-level attention."
           />
           <div className="flex items-center gap-3 shrink-0">
             <button
@@ -193,9 +193,8 @@ export default function FeaturedVehicles() {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
-        className={`flex gap-6 overflow-x-auto no-scrollbar px-6 lg:px-10 pb-6 select-none ${
-          isDragging ? 'cursor-grabbing' : 'cursor-grab'
-        }`}
+        className={`flex gap-6 overflow-x-auto no-scrollbar px-6 lg:px-10 pb-6 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'
+          }`}
         style={{ scrollPaddingLeft: '2.5rem' }}
       >
         {INFINITE_VEHICLES.map((vehicle, i) => (

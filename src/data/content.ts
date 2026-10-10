@@ -126,6 +126,70 @@ export interface FeaturedVehicle {
 
 export const FEATURED_VEHICLES: FeaturedVehicle[] = [
   {
+    name: 'Cadillac Escalade-V',
+    brand: 'Cadillac',
+    region: 'America',
+    image: '/american-cadillac-escalade-v.jpg',
+    note: 'Supercharged 6.2L V8 Escalade specialist — Magnetic Ride Control, electronic LSD & dealer telemetry.',
+    imageComment: 'Cadillac Escalade-V & CT5-V Blackwing atelier bay',
+  },
+  {
+    name: 'GMC Yukon Denali',
+    brand: 'GMC',
+    region: 'America',
+    image: '/american-gmc-yukon-denali.jpg',
+    note: 'Denali-grade maintenance — 10-speed transmission, air ride suspension, and precision diagnostics.',
+    imageComment: 'GMC Yukon Denali & Sierra Denali atelier',
+  },
+  {
+    name: 'Lincoln Navigator',
+    brand: 'Lincoln',
+    region: 'America',
+    image: '/american-lincoln-navigator.jpg',
+    note: 'Presidential-grade luxury SUV care — adaptive suspension, 3.5L Twin-Turbo EcoBoost & bespoke electronics.',
+    imageComment: 'Lincoln Navigator Presidential atelier bay',
+  },
+  {
+    name: 'Chevrolet Corvette Z06',
+    brand: 'Chevrolet',
+    region: 'America',
+    image: '/american-chevrolet-corvette-z06.jpg',
+    note: 'American flat-plane crank supercar specialist — LT6 V8 telemetry, carbon ceramic brakes & dual-clutch transmission.',
+    imageComment: 'Chevrolet Corvette Z06 mid-engine performance atelier',
+  },
+  {
+    name: 'Ford F-150 Raptor R',
+    brand: 'Ford',
+    region: 'America',
+    image: '/american-ford-raptor-mustang.jpg',
+    note: 'High-performance truck servicing — FOX Live Valve dampers, supercharged V8 and heavy-duty drivetrain.',
+    imageComment: 'Ford F-150 Raptor R & Mustang Dark Horse atelier',
+  },
+  {
+    name: 'Jeep Grand Wagoneer',
+    brand: 'Jeep',
+    region: 'America',
+    image: '/american-jeep-grand-wagoneer.jpg',
+    note: 'Flagship Wagoneer care — Hurricane Twin-Turbo 510, Quadra-Lift air suspension and luxury electronics.',
+    imageComment: 'Jeep Grand Wagoneer Series III & Wrangler Rubicon 392',
+  },
+  {
+    name: 'Dodge Challenger SRT Hellcat',
+    brand: 'Dodge',
+    region: 'America',
+    image: '/american-dodge-challenger-hellcat.jpg',
+    note: 'HEMI supercharged V8 specialist — 2.7L IHI supercharger maintenance, Mopar cooling and Brembo brake service.',
+    imageComment: 'Dodge Challenger SRT Hellcat & Durango SRT dyno bay',
+  },
+  {
+    name: 'Chevrolet Tahoe RST',
+    brand: 'Chevrolet',
+    region: 'America',
+    image: '/vehicles/Chevrolet/Tahoe.jpg',
+    note: 'Full-size SUV expertise — engine, transmission, suspension and high-performance brake systems.',
+    imageComment: 'Chevrolet Tahoe Premier RST',
+  },
+  {
     name: 'Lexus LX 600',
     brand: 'Lexus',
     region: 'Japan',
@@ -173,70 +237,6 @@ export const FEATURED_VEHICLES: FeaturedVehicle[] = [
     note: 'Track-proven Japanese performance — Brembo brakes, VTEC turbo maintenance.',
     imageComment: 'Honda Civic Type R',
   },
-  {
-    name: 'Cadillac Escalade',
-    brand: 'Cadillac',
-    region: 'America',
-    image: '/vehicles/Cadillac/Escalade.jpg',
-    note: 'Escalade specialist servicing — magnetic ride, infotainment and powertrain.',
-    imageComment: 'Cadillac Escalade',
-  },
-  {
-    name: 'GMC Yukon Denali',
-    brand: 'GMC',
-    region: 'America',
-    image: '/vehicles/GMC/Yukon Denali.jpg',
-    note: 'Denali-grade maintenance — suspension, diagnostics and premium detailing.',
-    imageComment: 'GMC Yukon Denali',
-  },
-  {
-    name: 'Ford F-150 Raptor',
-    brand: 'Ford',
-    region: 'America',
-    image: '/vehicles/Ford/F-150 Raptor.jpg',
-    note: 'Off-road performance servicing — FOX suspension, EcoBoost engine and drivetrain.',
-    imageComment: 'Ford F-150 Raptor',
-  },
-  {
-    name: 'Lincoln Navigator',
-    brand: 'Lincoln',
-    region: 'America',
-    image: '/vehicles/Lincoln/Navigator.jpg',
-    note: 'Navigator specialist — air suspension, electronics and comfort systems.',
-    imageComment: 'Lincoln Navigator',
-  },
-  {
-    name: 'Chevrolet Tahoe RST',
-    brand: 'Chevrolet',
-    region: 'America',
-    image: '/vehicles/Chevrolet/Tahoe.jpg',
-    note: 'Full-size SUV expertise — engine, transmission and brake systems.',
-    imageComment: 'Chevrolet Tahoe Premier RST',
-  },
-  {
-    name: 'Chevrolet Corvette Z06',
-    brand: 'Chevrolet',
-    region: 'America',
-    image: '/vehicles/Chevrolet/Corvette Z06.jpg',
-    note: 'American supercar specialist — mid-engine LT6 V8 diagnostics & dual-clutch transmission.',
-    imageComment: 'Chevrolet Corvette Z06',
-  },
-  {
-    name: 'Jeep Grand Wagoneer',
-    brand: 'Jeep',
-    region: 'America',
-    image: '/vehicles/Jeep/Grand Wagoneer.jpg',
-    note: 'Premium Wagoneer care — air suspension, Hurricane twin-turbo and luxury electronics.',
-    imageComment: 'Jeep Grand Wagoneer',
-  },
-  {
-    name: 'Dodge Challenger Hellcat',
-    brand: 'Dodge',
-    region: 'America',
-    image: '/vehicles/Dodge/Challenger.jpg',
-    note: 'HEMI V8 supercharged performance — cooling systems, supercharger maintenance and brakes.',
-    imageComment: 'Dodge Challenger SRT Hellcat',
-  },
 ];
 
 // ── Services ─────────────────────────────────────────────────────
@@ -250,42 +250,42 @@ export const SERVICES: Service[] = [
   {
     icon: 'Cog',
     title: 'Engine Repair & Diagnostics',
-    description: 'Precision engine diagnostics, overhaul, and mechanical repair using advanced factory-grade diagnostic tools and OEM equipment.',
+    description: 'Precision diagnostics and mechanical overhaul for American V8, EcoBoost, HEMI, Supercharged LT4/LT6 and Japanese V6 twin-turbo engines using factory OEM diagnostic scan tools.',
   },
   {
     icon: 'Settings2',
     title: 'Transmission Repair',
-    description: 'Automatic and manual transmission service, repair and rebuild — including CVT and 10-speed units.',
+    description: 'Specialist service and rebuilds for GM/Ford 10-speed, Chrysler 8-speed Torqueflite, Allison transmissions, dual-clutch supercars, and Japanese Lexus/Toyota multi-stage units.',
   },
   {
     icon: 'Gauge',
     title: 'Suspension & Steering',
-    description: 'Air suspension, magnetic ride, alignment and steering system expertise for luxury SUVs and performance cars.',
+    description: 'Advanced calibration for GM Magnetic Ride Control, Lincoln adaptive air suspension, Ford FOX Live Valve, Jeep Quadra-Lift, and Lexus AVS electronic damping.',
   },
   {
     icon: 'Disc',
-    title: 'Brake Repair',
-    description: 'High-performance brake servicing — pads, rotors, calipers and ABS diagnostics with genuine parts.',
+    title: 'Brake Repair & Upgrades',
+    description: 'High-performance brake servicing — Brembo, SRT, and OEM calipers, cross-drilled rotors, electronic park brake calibration, and factory brake fluid flush.',
   },
   {
     icon: 'Snowflake',
-    title: 'AC Repair',
-    description: 'Full climate control servicing, refrigerant recharge and electronic AC system diagnostics.',
+    title: 'AC & Climate Control',
+    description: 'Gulf-spec dual and tri-zone climate control repair, high-capacity R134a/R1234yf refrigerant servicing, compressor overhauls, and rear evaporator diagnostics.',
   },
   {
     icon: 'Paintbrush',
     title: 'Paint & Body Work',
-    description: 'Premium paint matching, panel work and dent repair with a colour-matched, factory-grade finish.',
+    description: 'Premium factory paint matching, aluminium panel restoration, and scratch repair with computerised spectrophotometer color-matching in a sterile spray booth.',
   },
   {
     icon: 'Droplets',
-    title: 'Oil Change & Periodic Service',
-    description: 'Scheduled maintenance with genuine oils and filters — keep your warranty and performance intact.',
+    title: 'Scheduled Oil & Filter Service',
+    description: 'Strict factory-interval servicing using Dexos-approved, Motorcraft, and OEM full-synthetic fluids and genuine filters to preserve manufacturer warranties.',
   },
   {
     icon: 'ClipboardCheck',
     title: 'Pre-Purchase Inspection',
-    description: 'Comprehensive 200-point inspection before you buy — full report on condition, value and potential issues.',
+    description: 'Comprehensive 200-point inspection covering drivetrain, chassis, ECU scan history, and paint depth analysis before buying any American or Japanese vehicle.',
   },
 ];
 
@@ -293,28 +293,28 @@ export const SERVICES: Service[] = [
 export const WHY_CHOOSE_US = [
   {
     icon: 'BadgeCheck',
-    title: 'Certified Technicians',
-    text: 'Our master technicians are brand-certified specialists equipped with advanced factory diagnostic systems — not generalists.',
+    title: 'Certified Master Technicians',
+    text: 'Our technicians are factory-certified American and Japanese automotive specialists equipped with OEM GM, Ford, Chrysler, and Lexus scan tools — not general mechanics.',
   },
   {
     icon: 'PackageCheck',
     title: 'Genuine & OEM Parts',
-    text: 'We fit only genuine and OEM-grade parts, preserving performance, warranty and resale value.',
+    text: 'We fit 100% genuine AC Delco, Motorcraft, Mopar, and Japanese OEM parts, guaranteeing uncompromising reliability, warranty compliance, and optimal performance.',
   },
   {
     icon: 'ScanLine',
     title: 'Dealer-Level Diagnostics',
-    text: 'Advanced diagnostic equipment matched to dealership standards — we find the real problem, fast.',
+    text: 'Equipped with dealership-grade diagnostic consoles and live telemetry scanners to detect electronic, powertrain, and chassis faults with pinpoint precision.',
   },
   {
     icon: 'ReceiptText',
-    title: 'Transparent Quotes',
-    text: 'You receive a clear, itemised quote before any work begins. No surprises, no hidden charges.',
+    title: 'Transparent Itemised Quotes',
+    text: 'Receive a clear, transparent digital quote prior to commencing work. No hidden costs, no unnecessary upsells — complete honesty at every stage.',
   },
   {
     icon: 'MapPin',
-    title: 'Dubai-Based, Established',
-    text: 'Backed by Euro Experts Auto Services — a trusted name in Dubai automotive care for over a decade.',
+    title: 'Dubai Atelier Facility',
+    text: 'Located in Al Quoz Industrial Area 4 with state-of-the-art hydraulic lifts, clean room engine bays, and climate-controlled client lounge.',
   },
 ];
 
@@ -337,52 +337,52 @@ export interface GalleryImage {
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
-    image: '/gallery-lexus-lx600.jpg',
-    alt: 'Lexus LX 600 undergoing multi-point service and diagnostics in Euro Experts atelier',
-    comment: 'Lexus LX 600 in dedicated luxury service bay with certified technician',
+    image: '/hero-american-cadillac-flagship.jpg',
+    alt: 'Cadillac Escalade-V & GMC Yukon Denali in Euro Experts flagship Dubai workshop atelier',
+    comment: 'Flagship American Luxury Atelier Bay with digital telemetry console',
     span: 'wide',
   },
   {
-    image: '/gallery-cadillac-escalade.jpg',
-    alt: 'Cadillac Escalade high-performance Brembo brake service on hydraulic lift',
-    comment: 'Cadillac Escalade brake disc and caliper maintenance on lift',
+    image: '/gallery-ford-lincoln-service.jpg',
+    alt: 'Lincoln Navigator on hydraulic lift and Ford Raptor in laser alignment bay',
+    comment: 'Lincoln & Ford specialist suspension calibration atelier bay',
+    span: 'tall',
+  },
+  {
+    image: '/gallery-corvette-service.jpg',
+    alt: 'Chevrolet Corvette C8 diagnostic telemetry scan in Euro Experts Dubai workshop atelier',
+    comment: 'Corvette C8 supercar telemetry & Euro Experts diagnostic atelier',
+    span: 'normal',
+  },
+  {
+    image: '/american-jeep-grand-wagoneer.jpg',
+    alt: 'Jeep Grand Wagoneer Series III & Wrangler Rubicon 392 computerized diagnostic bay',
+    comment: 'Jeep Grand Wagoneer factory OBD diagnostic telemetry',
+    span: 'normal',
+  },
+  {
+    image: '/gallery-lexus-lx600.jpg',
+    alt: 'Lexus LX 600 undergoing multi-point service and diagnostics in Euro Experts atelier',
+    comment: 'Lexus LX 600 in dedicated luxury service bay with certified technician',
+    span: 'tall',
+  },
+  {
+    image: '/american-dodge-challenger-hellcat.jpg',
+    alt: 'Dodge Challenger SRT Hellcat supercharged HEMI maintenance & Durango SRT tuning',
+    comment: 'Mopar SRT performance supercharger & powertrain bay',
     span: 'normal',
   },
   {
     image: '/gallery-toyota-lc300.jpg',
     alt: 'Toyota Land Cruiser 300 chassis and suspension inspection on 2-post lift',
     comment: 'Toyota Land Cruiser 300 elevated on 2-post lift with master technician',
-    span: 'tall',
-  },
-  {
-    image: '/gallery-ford-raptor.jpg',
-    alt: 'Ford F-150 Raptor R performance atelier service alongside GMC Yukon Denali in Euro Experts workshop',
-    comment: 'Ford F-150 Raptor R & American specialist bay in Euro Experts atelier',
     span: 'normal',
   },
   {
-    image: '/gallery-nissan-patrol.jpg',
-    alt: 'Nissan Patrol NISMO computerized diagnostic telemetry and system scanning',
-    comment: 'Nissan Patrol NISMO diagnostic scan with handheld OEM tablet',
+    image: '/american-gmc-yukon-denali.jpg',
+    alt: 'GMC Yukon Denali & Sierra Denali powertrain inspection and scheduled maintenance',
+    comment: 'GMC Denali luxury SUV and pickup service bay',
     span: 'wide',
-  },
-  {
-    image: '/gallery-gmc-yukon.jpg',
-    alt: 'GMC Yukon Denali powertrain inspection and scheduled maintenance',
-    comment: 'GMC Yukon Denali powertrain check in modern workshop bay',
-    span: 'normal',
-  },
-  {
-    image: '/gallery-infiniti-qx80.jpg',
-    alt: 'Infiniti QX80 full multi-point inspection in Euro Experts workshop atelier',
-    comment: 'Infiniti QX80 inspection in immaculate service bay',
-    span: 'tall',
-  },
-  {
-    image: '/gallery-corvette-service.jpg',
-    alt: 'Chevrolet Corvette Z06 performance calibration in dedicated Euro Experts bay',
-    comment: 'Chevrolet Corvette Z06 calibration on hydraulic scissor lift',
-    span: 'normal',
   },
 ];
 
@@ -396,40 +396,40 @@ export interface Review {
 
 export const REVIEWS: Review[] = [
   {
-    name: 'Ahmed Al Mansoori',
-    vehicle: 'Lexus LX 600',
-    rating: 5,
-    text: 'Outstanding service for my LX 600. The team diagnosed an issue three other garages missed. Genuinely dealer-level care without the dealership wait.',
-  },
-  {
     name: 'James Carter',
-    vehicle: 'Cadillac Escalade',
+    vehicle: 'Cadillac Escalade-V',
     rating: 5,
-    text: 'Finally a workshop in Dubai that understands American vehicles. They sorted my Escalade\'s magnetic ride suspension perfectly. Transparent pricing throughout.',
+    text: 'Finally a workshop in Dubai that genuinely understands American luxury vehicles. They sorted my Escalade-V\'s Magnetic Ride suspension and supercharger cooling perfectly. Dealer-level precision without the exorbitant agency markup.',
   },
   {
-    name: 'Khalid Al Rashid',
-    vehicle: 'Toyota Land Cruiser 300',
+    name: 'Fahad Al Qasimi',
+    vehicle: 'GMC Yukon Denali',
     rating: 5,
-    text: 'My Land Cruiser gets the attention it deserves here. Genuine parts, meticulous work, and the team actually knows these vehicles inside out.',
+    text: 'The best workshop in Al Quoz for GMC Yukon and Sierra. Diagnostic scan was fast, quote was transparent, and the 10-speed gearbox shifting is now butter-smooth. True master craftsmen.',
   },
   {
     name: 'Sarah Williams',
     vehicle: 'Ford F-150 Raptor',
     rating: 5,
-    text: 'The Raptor\'s FOX suspension was properly serviced — not just a quick fix. These technicians understand performance vehicles. Highly recommended.',
-  },
-  {
-    name: 'Omar Al Futtaim',
-    vehicle: 'Infiniti QX80',
-    rating: 5,
-    text: 'Professional, clean, and precise. The quote was exactly what I paid. My QX80 runs like new after their full service. A genuinely premium experience.',
+    text: 'The Raptor\'s FOX Live Valve suspension was properly diagnosed and calibrated — not just a quick patch. These technicians have genuine passion and knowledge for American trucks.',
   },
   {
     name: 'Michael Torres',
     vehicle: 'Jeep Grand Wagoneer',
     rating: 5,
-    text: 'They handled the air suspension and electronics on my Grand Wagoneer with real expertise. Hard to find this level of American car knowledge in Dubai.',
+    text: 'They handled the Hurricane twin-turbo engine inspection and air suspension on my Grand Wagoneer with outstanding expertise. Hard to find this level of American car expertise in Dubai.',
+  },
+  {
+    name: 'Ahmed Al Mansoori',
+    vehicle: 'Lexus LX 600',
+    rating: 5,
+    text: 'Outstanding service for my LX 600. The team diagnosed an electrical sensor issue three other garages missed. Genuinely dealer-level care without the dealership wait.',
+  },
+  {
+    name: 'Khalid Al Rashid',
+    vehicle: 'Toyota Land Cruiser 300',
+    rating: 5,
+    text: 'My Land Cruiser gets the attention it deserves here. Genuine OEM parts, meticulous cleanliness, and the team knows the LC300 platform inside out.',
   },
 ];
 
@@ -444,28 +444,28 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: 'Do you service Lexus and Land Cruiser?',
-    answer: 'Yes. We specialise in premium Japanese vehicles including Lexus, Toyota Land Cruiser, Nissan Patrol, Infiniti and Acura. Our technicians are specifically trained on these platforms.',
+    question: 'Do you specialise in American luxury brands like Cadillac, GMC, Lincoln, Ford, Chevrolet, Jeep and Dodge?',
+    answer: 'Yes. We are Dubai\'s premier specialist atelier for American automotive marques. From Cadillac Escalade and CT5-V, GMC Yukon Denali, Lincoln Navigator, Ford Raptor and Mustang, Chevrolet Corvette and Tahoe, to Jeep Grand Wagoneer and Dodge Hellcat, our master technicians use factory-level diagnostic systems (GM Techline, Ford IDS/FDRS, WiTech) and genuine OEM parts.',
   },
   {
-    question: 'Do you use genuine parts?',
-    answer: 'Absolutely. We use only genuine and OEM-grade parts for all repairs and servicing. This preserves your vehicle\'s performance, warranty and resale value.',
+    question: 'Do you also service Japanese luxury vehicles like Lexus and Land Cruiser?',
+    answer: 'Absolutely. Alongside our American vehicle expertise, we provide full dealership-level maintenance for Lexus LX 600, Toyota Land Cruiser 300, Nissan Patrol NISMO, Infiniti, and Acura with certified Japanese platform technicians.',
   },
   {
-    question: 'Do I get a quote before work starts?',
-    answer: 'Always. You receive a clear, itemised quote before any work begins. Nothing proceeds without your written or verbal approval. No surprises, no hidden charges.',
+    question: 'Do you use genuine and OEM parts?',
+    answer: 'Exclusively. We install only genuine OEM-grade parts (ACDelco, Motorcraft, Mopar, and genuine Japanese parts). This guarantees optimal performance, factory warranty protection, and preserves the resale value of your vehicle.',
   },
   {
-    question: 'Do you offer pre-purchase inspection?',
-    answer: 'Yes. We offer a comprehensive 200-point pre-purchase inspection with a full written report on the vehicle\'s condition, value and any potential issues — ideal before buying a used premium vehicle.',
+    question: 'Do I get a transparent quote before work begins?',
+    answer: 'Always. You receive a clear, comprehensive digital itemised estimate detailing parts, labour, and diagnostics before any work begins. Nothing proceeds without your explicit approval. No surprises, no hidden fees.',
   },
   {
-    question: 'What are your timings?',
-    answer: 'We are open Monday to Sunday, 8:00 AM to 6:00 PM, 7 days a week. You can reach us on WhatsApp or phone anytime for bookings or urgent inquiries.',
+    question: 'Do you offer comprehensive Pre-Purchase Inspections (PPI)?',
+    answer: 'Yes. We provide a meticulous 200-point Pre-Purchase Inspection with digital paint depth measurement, full ECU computer scans, suspension and chassis inspection, and road testing with an exhaustive written report before you buy a pre-owned luxury vehicle in the UAE.',
   },
   {
-    question: 'Where are you located?',
-    answer: 'We are located at 29 4 St, Al Qouz Industrial Area 4, Dubai, UAE. We have easy access from Sheikh Zayed Road and Al Khail Road. Click our location link or map for turn-by-turn directions.',
+    question: 'Where is your workshop located and what are your operating hours?',
+    answer: 'We are conveniently located at 29 4 St, Al Quoz Industrial Area 4, Dubai, UAE with swift access from Sheikh Zayed Road and Al Khail Road. We are open Monday to Sunday, 8:00 AM to 6:00 PM, 7 days a week.',
   },
 ];
 

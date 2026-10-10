@@ -11,9 +11,7 @@ export default defineConfig({
     },
   },
   server: {
-    watch: {
-      ignored: ['**/public/**'],
-    },
+    port: 5173,
   },
   optimizeDeps: {
     exclude: ['lucide-react'],

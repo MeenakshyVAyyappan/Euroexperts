@@ -22,10 +22,10 @@ export default function WhyChooseUs() {
               {/* Main workshop image */}
               <div className="relative rounded-2xl overflow-hidden glass-card border border-white/18 aspect-[4/5] lg:aspect-[3/4] shadow-2xl group">
                 <img
-                  src="/asian-master-technician.jpg"
-                  alt="Certified master technician running diagnostic telemetry with Lexus LX 600 in Euro Experts workshop"
+                  src="/gallery-cadillac-escalade.jpg"
+                  alt="Certified master technician inspecting Cadillac Escalade Brembo brake system with precision torque calibration in Euro Experts atelier"
                   loading="lazy"
-                  className="w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center brightness-[1.04] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#141622]/70 via-transparent to-transparent" />
               </div>

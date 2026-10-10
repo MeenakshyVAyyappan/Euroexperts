@@ -22,7 +22,7 @@ import { BUSINESS } from '@/data/content';
 function App() {
   useEffect(() => {
     // SEO: Set document title and meta description
-    document.title = 'Euro Experts Auto Services | Premier Luxury & Performance Car Workshop Dubai';
+    document.title = 'Euro Experts Auto Services | Premier American & Japanese Luxury Car Workshop Dubai';
 
     const setMeta = (name: string, content: string, attr: 'name' | 'property' = 'name') => {
       let tag = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -34,9 +34,9 @@ function App() {
       tag.setAttribute('content', content);
     };
 
-    setMeta('description', 'Dealership-level auto service and specialist repair in Al Quoz, Dubai. Certified master technicians, genuine OEM parts, advanced computer diagnostics for Lexus, Land Cruiser, Patrol, Escalade, Yukon, Mustang, Corvette and more.');
-    setMeta('og:title', 'Euro Experts Auto Services | Premier Auto Workshop Dubai', 'property');
-    setMeta('og:description', 'Dealership-level auto service in Al Quoz, Dubai. Certified technicians, genuine parts, precision diagnostics.', 'property');
+    setMeta('description', 'Dealership-level auto service and specialist repair in Al Quoz, Dubai. Certified master technicians, genuine OEM parts, advanced computer diagnostics for Cadillac Escalade, GMC Yukon, Lincoln, Ford Raptor, Corvette, Lexus, Land Cruiser and Patrol.');
+    setMeta('og:title', 'Euro Experts Auto Services | Premier American & Japanese Auto Workshop Dubai', 'property');
+    setMeta('og:description', 'Dealership-level auto service in Al Quoz, Dubai specializing in American luxury marques & Japanese vehicles. Certified technicians, genuine parts, precision diagnostics.', 'property');
     setMeta('og:type', 'website', 'property');
     setMeta('og:site_name', 'Euro Experts Auto Services LLC', 'property');
     setMeta('og:image', '/euroexpert-official-logo.png', 'property');

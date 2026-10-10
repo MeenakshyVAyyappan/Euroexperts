@@ -16,9 +16,9 @@ import { VehiclePreviewModal } from '@/components/ui/VehiclePreviewModal';
 type Region = 'japanese' | 'american';
 
 export default function BrandSwitcher() {
-  const [region, setRegion] = useState<Region>('japanese'); // Default to Japanese (Lexus)
-  const [selectedBrandIndex, setSelectedBrandIndex] = useState<number>(0); // Index 0 is Lexus
-  const [selectedModelIndex, setSelectedModelIndex] = useState<number>(0); // Default to first model (LX 600)
+  const [region, setRegion] = useState<Region>('american'); // Default to American Performance & Luxury (Cadillac)
+  const [selectedBrandIndex, setSelectedBrandIndex] = useState<number>(0); // Index 0 is Cadillac
+  const [selectedModelIndex, setSelectedModelIndex] = useState<number>(0); // Default to first model (Escalade)
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [previewVehicle, setPreviewVehicle] = useState<{
     brand: string;
@@ -31,7 +31,7 @@ export default function BrandSwitcher() {
   const touchStartXRef = useRef<number | null>(null);
 
   const brands: ShowroomBrand[] =
-    region === 'japanese' ? SHOWROOM_JAPANESE_BRANDS : SHOWROOM_AMERICAN_BRANDS;
+    region === 'american' ? SHOWROOM_AMERICAN_BRANDS : SHOWROOM_JAPANESE_BRANDS;
 
   // Active brand & model
   const currentBrand: ShowroomBrand = brands[selectedBrandIndex] || brands[0];
@@ -143,24 +143,22 @@ export default function BrandSwitcher() {
           <button
             type="button"
             role="tab"
-            id="japanese-tab"
-            aria-selected={region === 'japanese'}
+            id="american-tab"
+            aria-selected={region === 'american'}
             aria-controls="vehicle-panel"
-            onClick={() => handleRegionChange('japanese')}
-            className={`group relative flex items-center justify-between gap-10 sm:gap-16 py-5 pr-8 sm:pr-12 text-xs tracking-[1.4px] font-semibold uppercase cursor-pointer transition-colors duration-300 shrink-0 ${
-              region === 'japanese' ? 'text-white' : 'text-[#8E96A8] hover:text-white'
-            }`}
-          >
-            <span>Japanese Excellence & Luxury</span>
-            <span
-              className={`text-[10px] font-bold transition-colors ${
-                region === 'japanese' ? 'text-gold' : 'text-[#7B8394] group-hover:text-gold/80'
+            onClick={() => handleRegionChange('american')}
+            className={`group relative flex items-center justify-between gap-10 sm:gap-16 py-5 pr-8 sm:pr-12 text-xs tracking-[1.4px] font-semibold uppercase cursor-pointer transition-colors duration-300 shrink-0 ${region === 'american' ? 'text-white' : 'text-[#8E96A8] hover:text-white'
               }`}
+          >
+            <span>American Performance & Luxury</span>
+            <span
+              className={`text-[10px] font-bold transition-colors ${region === 'american' ? 'text-gold' : 'text-[#7B8394] group-hover:text-gold/80'
+                }`}
             >
               01
             </span>
             {/* Active underline bar */}
-            {region === 'japanese' && (
+            {region === 'american' && (
               <motion.div
                 layoutId="region-underline"
                 className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-gold"
@@ -172,24 +170,22 @@ export default function BrandSwitcher() {
           <button
             type="button"
             role="tab"
-            id="american-tab"
-            aria-selected={region === 'american'}
+            id="japanese-tab"
+            aria-selected={region === 'japanese'}
             aria-controls="vehicle-panel"
-            onClick={() => handleRegionChange('american')}
-            className={`group relative flex items-center justify-between gap-10 sm:gap-16 py-5 pr-8 sm:pr-12 text-xs tracking-[1.4px] font-semibold uppercase cursor-pointer transition-colors duration-300 shrink-0 ${
-              region === 'american' ? 'text-white' : 'text-[#8E96A8] hover:text-white'
-            }`}
-          >
-            <span>American Performance & Luxury</span>
-            <span
-              className={`text-[10px] font-bold transition-colors ${
-                region === 'american' ? 'text-gold' : 'text-[#7B8394] group-hover:text-gold/80'
+            onClick={() => handleRegionChange('japanese')}
+            className={`group relative flex items-center justify-between gap-10 sm:gap-16 py-5 pr-8 sm:pr-12 text-xs tracking-[1.4px] font-semibold uppercase cursor-pointer transition-colors duration-300 shrink-0 ${region === 'japanese' ? 'text-white' : 'text-[#8E96A8] hover:text-white'
               }`}
+          >
+            <span>Japanese Excellence & Luxury</span>
+            <span
+              className={`text-[10px] font-bold transition-colors ${region === 'japanese' ? 'text-gold' : 'text-[#7B8394] group-hover:text-gold/80'
+                }`}
             >
               02
             </span>
             {/* Active underline bar */}
-            {region === 'american' && (
+            {region === 'japanese' && (
               <motion.div
                 layoutId="region-underline"
                 className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-gold"
@@ -221,9 +217,8 @@ export default function BrandSwitcher() {
                 id={`brand-${region}-${idx}`}
                 aria-selected={isSelected}
                 onClick={() => handleBrandChange(idx)}
-                className={`relative py-4 sm:py-5 text-sm sm:text-[15px] font-sans font-medium transition-all duration-200 shrink-0 flex items-center gap-2 cursor-pointer ${
-                  isSelected ? 'text-white font-semibold' : 'text-[#8E96A8] hover:text-white'
-                }`}
+                className={`relative py-4 sm:py-5 text-sm sm:text-[15px] font-sans font-medium transition-all duration-200 shrink-0 flex items-center gap-2 cursor-pointer ${isSelected ? 'text-white font-semibold' : 'text-[#8E96A8] hover:text-white'
+                  }`}
               >
                 <span>{brand.name}</span>
                 {hasFlagshipDot && (
@@ -290,9 +285,8 @@ export default function BrandSwitcher() {
                   }
                   setImageLoaded(true);
                 }}
-                className={`w-full h-full object-cover brightness-[1.08] contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-700 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`w-full h-full object-cover brightness-[1.08] contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                 loading="eager"
                 decoding="async"
               />
@@ -434,11 +428,10 @@ export default function BrandSwitcher() {
                     setSelectedModelIndex(idx);
                     setImageLoaded(false);
                   }}
-                  className={`text-xs font-sans tracking-wide px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${
-                    isSelected
-                      ? 'border border-gold text-white bg-gold/20 font-semibold shadow-sm'
-                      : 'border border-white/15 text-[#B2B8C8] hover:border-white/35 hover:text-white bg-white/[0.03]'
-                  }`}
+                  className={`text-xs font-sans tracking-wide px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${isSelected
+                    ? 'border border-gold text-white bg-gold/20 font-semibold shadow-sm'
+                    : 'border border-white/15 text-[#B2B8C8] hover:border-white/35 hover:text-white bg-white/[0.03]'
+                    }`}
                 >
                   {model.name}
                 </button>
