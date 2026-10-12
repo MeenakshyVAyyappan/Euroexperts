@@ -34,7 +34,7 @@ function App() {
       tag.setAttribute('content', content);
     };
 
-    setMeta('description', 'Dealership-level auto service and specialist repair in Al Quoz, Dubai. Certified master technicians, genuine OEM parts, advanced computer diagnostics for Cadillac Escalade, GMC Yukon, Lincoln, Ford Raptor, Corvette, Lexus, Land Cruiser and Patrol.');
+    setMeta('description', 'Dealership-level auto service and specialist repair in Al Quoz, Dubai. Certified master technicians, 100% genuine parts, advanced computer diagnostics for Cadillac Escalade, GMC Yukon, Lincoln, Ford Raptor, Corvette, Lexus, Land Cruiser and Patrol.');
     setMeta('og:title', 'Euro Experts Auto Services | Premier American & Japanese Auto Workshop Dubai', 'property');
     setMeta('og:description', 'Dealership-level auto service in Al Quoz, Dubai specializing in American luxury marques & Japanese vehicles. Certified technicians, genuine parts, precision diagnostics.', 'property');
     setMeta('og:type', 'website', 'property');

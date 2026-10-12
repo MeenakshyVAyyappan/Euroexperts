@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const BRAND_NAMES = [
   'Cadillac', 'Lincoln', 'GMC', 'Ford', 'Chevrolet', 'Jeep', 'Dodge',
-  'Lexus', 'Toyota', 'Infiniti', 'Nissan', 'Acura', 'Honda',
+  'Lexus', 'Infiniti',
 ];
 
 export default function BrandMarquee() {

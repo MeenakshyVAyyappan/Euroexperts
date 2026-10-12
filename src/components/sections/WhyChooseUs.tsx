@@ -60,7 +60,7 @@ export default function WhyChooseUs() {
             <SectionTitle
               eyebrow="Why Choose Us"
               title="Craftsmanship Without Compromise"
-              subtitle="We are not a general garage. We provide dealership-level diagnostics, factory-certified technicians, and genuine OEM parts — delivering precision in every repair."
+              subtitle="We are not a general garage. We provide dealership-level diagnostics, factory-certified technicians, and 100% genuine parts — delivering precision in every repair."
             />
 
             <div className="space-y-6">

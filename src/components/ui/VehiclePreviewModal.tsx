@@ -131,14 +131,14 @@ export function VehiclePreviewModal({
               </h3>
 
               <p className="text-sm font-sans text-[#BAC0D0] leading-relaxed mb-6">
-                Specialized dealer-level computerized diagnostics, suspension tuning, precision transmission maintenance, and genuine OEM parts for your {brand} {model}.
+                Specialized dealer-level computerized diagnostics, suspension tuning, precision transmission maintenance, and 100% genuine parts for your {brand} {model}.
               </p>
 
               {/* Key Service Highlights */}
               <div className="grid grid-cols-2 gap-2.5 mb-6 text-xs font-sans text-white">
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#282C3E] border border-white/12 shadow-sm">
                   <span className="text-gold text-sm">✦</span>
-                  <span className="font-medium">OEM Diagnostics</span>
+                  <span className="font-medium">Dealer Diagnostics</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#282C3E] border border-white/12 shadow-sm">
                   <span className="text-gold text-sm">✦</span>

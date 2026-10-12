@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { MessageCircle, Phone, ChevronDown, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { BUSINESS } from '@/data/content';
 
-const HEADLINE_WORDS = ['Specialists', 'in', 'American', '&', 'Premium', 'Japanese', 'Vehicles'];
+const HEADLINE_WORDS = ['Specialists', 'in', 'American', '&', 'Premium', 'Vehicles'];
 
 const HERO_WORKSHOP_SLIDES = [
   {
@@ -11,35 +11,35 @@ const HERO_WORKSHOP_SLIDES = [
     title: 'American Luxury Specialist Bay',
     origin: 'Flagship Bay 01',
     label: 'Escalade & Yukon',
-    image: '/hero-american-cadillac-flagship.jpg',
+    image: '/hero-workshop-euroexperts-flagship.jpg',
   },
   {
-    name: 'Cadillac Escalade-V & CT5-V Blackwing V-Series Atelier',
-    title: 'American V-Series Specialists',
-    origin: 'Cadillac Bay 02',
-    label: 'Cadillac V-Series',
-    image: '/american-cadillac-escalade-v.jpg',
+    name: 'Corvette Z06 Supercar & Ford Raptor Performance Atelier',
+    title: 'American Supercar & Laser Alignment Atelier',
+    origin: 'Performance Bay 02',
+    label: 'Corvette & Raptor',
+    image: '/hero-workshop-euroexperts-performance.jpg',
   },
   {
-    name: 'Lincoln Navigator Presidential & Ford Raptor Performance Bays',
-    title: 'American Suspension & Alignment',
-    origin: 'Specialist Bay 03',
-    label: 'Lincoln & Raptor',
-    image: '/gallery-ford-lincoln-service.jpg',
+    name: 'Lincoln Navigator Presidential & Adaptive Suspension Bay',
+    title: 'American Luxury Suspension & Hydraulic Lift Bay',
+    origin: 'Executive Bay 03',
+    label: 'Lincoln Navigator',
+    image: '/hero-workshop-euroexperts-lincoln.jpg',
   },
   {
-    name: 'Corvette Z06 Mid-Engine LT6 & Tahoe RST Performance Atelier',
-    title: 'Supercar & SUV Calibration',
-    origin: 'Performance Bay 04',
-    label: 'Corvette Z06',
-    image: '/american-chevrolet-corvette-z06.jpg',
+    name: 'Lexus LX600 & Infiniti QX80 Japanese Luxury Atelier',
+    title: 'Japanese Luxury Specialists & Diagnostic Lounge',
+    origin: 'Japanese Bay 04',
+    label: 'Lexus & Infiniti',
+    image: '/hero-workshop-euroexperts-japanese.jpg',
   },
   {
-    name: 'GMC Yukon Denali & Sierra Denali Luxury Atelier',
-    title: 'American Denali Specialists',
-    origin: 'Denali Bay 05',
-    label: 'GMC Denali',
-    image: '/american-gmc-yukon-denali.jpg',
+    name: 'Jeep Grand Wagoneer & Dodge Challenger Hellcat V8 Atelier',
+    title: 'HEMI V8 & Advanced Telemetry Diagnostics Bay',
+    origin: 'HEMI Bay 05',
+    label: 'Jeep & Hellcat',
+    image: '/hero-workshop-euroexperts-hemi.jpg',
   },
 ];
 
@@ -262,7 +262,7 @@ export default function Hero() {
               Japanese
             </span>
             <span className="text-white/90 font-normal text-[11px] xs:text-xs sm:text-sm">
-              Lexus · Toyota · Infiniti · Nissan · Acura · Honda
+              Lexus · Infiniti
             </span>
           </div>
         </motion.div>
@@ -341,14 +341,14 @@ export default function Hero() {
           <div className="flex items-center gap-1 xs:gap-1.5">
             <button
               onClick={handlePrevSlide}
-              aria-label="Previous American Atelier Bay"
+              aria-label="Previous Euro Experts Workshop Bay"
               className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#12141D]/90 border border-white/20 hover:border-gold hover:bg-gold/20 flex items-center justify-center text-white hover:text-gold transition-all duration-200 cursor-pointer shadow-lg"
             >
               <ChevronLeft className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
             </button>
             <button
               onClick={handleNextSlide}
-              aria-label="Next American Atelier Bay"
+              aria-label="Next Euro Experts Workshop Bay"
               className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#12141D]/90 border border-white/20 hover:border-gold hover:bg-gold/20 flex items-center justify-center text-white hover:text-gold transition-all duration-200 cursor-pointer shadow-lg"
             >
               <ChevronRight className="w-3.5 h-3.5 xs:w-4 xs:h-4" />

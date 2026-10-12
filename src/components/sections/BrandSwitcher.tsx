@@ -206,6 +206,7 @@ export default function BrandSwitcher() {
             const isSelected = selectedBrandIndex === idx;
             const hasFlagshipDot =
               brand.name === 'Lexus' ||
+              brand.name === 'Infiniti' ||
               brand.name === 'Cadillac' ||
               brand.name === 'Dodge';
 
@@ -368,7 +369,7 @@ export default function BrandSwitcher() {
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5 text-gold shrink-0 stroke-[2.5]" />
-                    OEM & PREMIUM PARTS
+                    GENUINE & ORIGINAL PARTS
                   </span>
                 </div>
 
@@ -444,7 +445,7 @@ export default function BrandSwitcher() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-8 mt-5 text-[11px] text-[#A0A8BA] font-sans leading-relaxed">
           <p>
             {region === 'japanese'
-              ? 'Lexus, Infiniti and Acura — the luxury divisions of Toyota, Nissan and Honda.'
+              ? 'Lexus and Infiniti — Japanese luxury automotive divisions.'
               : "From Cadillac's flagship luxury to Ford performance. Lincoln is Ford's luxury division."}
           </p>
           <span className="text-[10px] text-[#868F9E]">

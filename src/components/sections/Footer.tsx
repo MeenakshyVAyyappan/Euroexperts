@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, Instagram } from 'lucide-react';
 import { BUSINESS, NAV_LINKS } from '@/data/content';
 
 export default function Footer() {
@@ -23,40 +23,49 @@ export default function Footer() {
             </div>
             <p className="text-sm text-[#B2B8C8] font-sans leading-relaxed max-w-md mt-4">
               Premier automotive service and repair workshop in Dubai. Certified master technicians,
-              genuine OEM parts, and dealership-grade diagnostic care.
+              100% genuine parts, and dealership-grade diagnostic care.
             </p>
             <div className="flex gap-3 mt-6">
+              <a
+                href={BUSINESS.instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md group"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4 text-gold group-hover:text-black transition-colors" strokeWidth={1.75} />
+              </a>
               <a
                 href={BUSINESS.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md"
+                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md group"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-4 h-4 text-gold hover:text-black transition-colors" strokeWidth={1.75} />
+                <MessageCircle className="w-4 h-4 text-gold group-hover:text-black transition-colors" strokeWidth={1.75} />
               </a>
               <a
                 href={`tel:${BUSINESS.phone1Tel}`}
-                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md"
+                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md group"
                 aria-label="Call"
               >
-                <Phone className="w-4 h-4 text-gold hover:text-black transition-colors" strokeWidth={1.75} />
+                <Phone className="w-4 h-4 text-gold group-hover:text-black transition-colors" strokeWidth={1.75} />
               </a>
               <a
                 href={`mailto:${BUSINESS.email}`}
-                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md"
+                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md group"
                 aria-label="Email"
               >
-                <Mail className="w-4 h-4 text-gold hover:text-black transition-colors" strokeWidth={1.75} />
+                <Mail className="w-4 h-4 text-gold group-hover:text-black transition-colors" strokeWidth={1.75} />
               </a>
               <a
                 href={BUSINESS.mapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md"
+                className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/18 flex items-center justify-center hover:bg-gold hover:border-gold text-white hover:text-black transition-all shadow-md group"
                 aria-label="Location"
               >
-                <MapPin className="w-4 h-4 text-gold hover:text-black transition-colors" strokeWidth={1.75} />
+                <MapPin className="w-4 h-4 text-gold group-hover:text-black transition-colors" strokeWidth={1.75} />
               </a>
             </div>
           </div>

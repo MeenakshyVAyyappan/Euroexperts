@@ -28,7 +28,7 @@ export const VEHICLE_TYPE_DESCRIPTIONS: Record<VehicleType, string> = {
 export const SHOWROOM_JAPANESE_BRANDS: ShowroomBrand[] = [
   {
     name: 'Lexus',
-    note: 'Japanese refinement. Specialist attention.',
+    note: 'Japanese luxury refinement. Dealership-grade specialist attention.',
     models: [
       { name: 'LX 600', imageKey: 'lexus-lx600', family: 'Lexus LX', type: 'SUV' },
       { name: 'LX 570', imageKey: 'lexus-lx570', family: 'Lexus LX', type: 'SUV' },
@@ -45,56 +45,14 @@ export const SHOWROOM_JAPANESE_BRANDS: ShowroomBrand[] = [
     ],
   },
   {
-    name: 'Toyota',
-    note: 'Built for the long road. Maintained for it.',
-    models: [
-      { name: 'Land Cruiser 300', imageKey: 'toyota-landcruiser', family: 'Toyota Land Cruiser', type: 'SUV' },
-      { name: 'Land Cruiser 200', imageKey: 'toyota-landcruiser', family: 'Toyota Land Cruiser', type: 'SUV' },
-      { name: 'Land Cruiser Prado', imageKey: 'toyota-prado', family: 'Toyota Prado', type: 'SUV' },
-      { name: 'Sequoia', imageKey: 'toyota-sequoia', family: 'Toyota Sequoia', type: 'SUV' },
-      { name: 'Tundra', imageKey: 'toyota-tundra', family: 'Toyota Tundra', type: 'Pickup' },
-      { name: 'Crown', imageKey: 'toyota-crown', family: 'Toyota Crown', type: 'Sedan' },
-      { name: 'GR Supra', imageKey: 'toyota-supra', family: 'Toyota GR Supra', type: 'Performance' },
-      { name: 'GR Yaris', imageKey: 'toyota-yaris', family: 'Toyota GR Yaris', type: 'Performance' },
-    ],
-  },
-  {
     name: 'Infiniti',
-    note: "Nissan's luxury division. Precision in every detail.",
+    note: "Japanese luxury division. Precision in every engineering detail.",
     models: [
       { name: 'QX80', imageKey: 'infiniti-qx80', family: 'Infiniti QX80', type: 'SUV' },
       { name: 'QX60', imageKey: 'infiniti-qx60', family: 'Infiniti QX60', type: 'SUV' },
       { name: 'QX50', imageKey: 'infiniti-qx50', family: 'Infiniti QX50', type: 'SUV' },
       { name: 'Q50', imageKey: 'infiniti-q50', family: 'Infiniti Q50', type: 'Sedan' },
       { name: 'Q60', imageKey: 'infiniti-q60', family: 'Infiniti Q60', type: 'Performance' },
-    ],
-  },
-  {
-    name: 'Nissan',
-    note: 'From desert capability to track-bred performance.',
-    models: [
-      { name: 'Patrol', imageKey: 'nissan-patrol', family: 'Nissan Patrol', type: 'SUV' },
-      { name: 'Patrol NISMO', imageKey: 'nissan-patrol', family: 'Nissan Patrol', type: 'SUV' },
-      { name: 'Z', imageKey: 'nissan-z', family: 'Nissan Z', type: 'Performance' },
-      { name: 'GT-R', imageKey: 'nissan-gtr', family: 'Nissan GT-R', type: 'Performance' },
-    ],
-  },
-  {
-    name: 'Acura',
-    note: 'Honda engineering. Acura refinement.',
-    models: [
-      { name: 'MDX', imageKey: 'acura-mdx', family: 'Acura MDX', type: 'SUV' },
-      { name: 'RDX', imageKey: 'acura-rdx', family: 'Acura RDX', type: 'SUV' },
-      { name: 'TLX', imageKey: 'acura-tlx', family: 'Acura TLX', type: 'Sedan' },
-    ],
-  },
-  {
-    name: 'Honda',
-    note: 'Engineered with precision. Maintained to perform.',
-    models: [
-      { name: 'Pilot', imageKey: 'honda-pilot', family: 'Honda Pilot', type: 'SUV' },
-      { name: 'Civic Type R', imageKey: 'honda-civic', family: 'Honda Civic Type R', type: 'Performance' },
-      { name: 'NSX', imageKey: 'honda-nsx', family: 'Honda NSX', type: 'Performance' },
     ],
   },
 ];

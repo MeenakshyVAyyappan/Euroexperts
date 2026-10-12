@@ -22,6 +22,7 @@ export const BUSINESS = {
   mapsQuery: 'Euro Experts Auto Services, 29 4 St, Al Quoz Industrial Area 4, Dubai',
   mapsLink: 'https://maps.google.com/maps?q=euro+expert+dubai',
   mapsEmbed: 'https://maps.google.com/maps?q=euro%20expert%20dubai&t=m&z=19&output=embed&iwloc=near',
+  instagramLink: 'https://www.instagram.com/euroexpertsauto/?hl=en',
 };
 
 export const NAV_LINKS = [
@@ -34,17 +35,17 @@ export const NAV_LINKS = [
 ];
 
 export const TRUST_ITEMS = [
-  { icon: 'BadgeCheck', label: 'Certified Technicians', value: 15, suffix: '+' },
-  { icon: 'PackageCheck', label: 'Genuine & OEM Parts', value: 100, suffix: '%' },
+  { icon: 'BadgeCheck', label: 'Certified Technicians', value: 50, suffix: '+' },
+  { icon: 'PackageCheck', label: 'Genuine Original Parts', value: 100, suffix: '%' },
   { icon: 'ScanLine', label: 'Advanced Diagnostics', value: 50, suffix: '+' },
   { icon: 'ReceiptText', label: 'Transparent Pricing', value: 0, suffix: '', isStatic: true, staticText: 'Always' },
 ];
 
 export const STATS = [
-  { label: 'Years of Experience', value: 15, suffix: '+' },
-  { label: 'Vehicles Serviced', value: 8000, suffix: '+' },
+  { label: 'Years of Experience', value: 10, suffix: '+' },
+  { label: 'Vehicles Serviced', value: 30000, suffix: '+' },
   { label: 'Google Rating', value: 4.9, suffix: '★', decimals: 1 },
-  { label: 'Certified Technicians', value: 12, suffix: '' },
+  { label: 'Certified Technicians', value: 50, suffix: '+' },
 ];
 
 // ── Brand Switcher Data ──────────────────────────────────────────
@@ -60,24 +61,8 @@ export const JAPANESE_BRANDS: Brand[] = [
     models: ['LX 600', 'LX 570', 'GX 460', 'GX 550', 'RX 350', 'RX 500h', 'NX', 'ES 350', 'LS 500', 'IS 350', 'LC 500'],
   },
   {
-    name: 'Toyota',
-    models: ['Land Cruiser 300', 'Land Cruiser 200', 'Land Cruiser Prado', 'Sequoia', 'Tundra', 'Crown', 'GR Supra', 'GR Yaris'],
-  },
-  {
     name: 'Infiniti',
     models: ['QX80', 'QX60', 'QX50', 'Q50', 'Q60'],
-  },
-  {
-    name: 'Nissan',
-    models: ['Patrol', 'Patrol NISMO', 'Z', 'GT-R'],
-  },
-  {
-    name: 'Acura',
-    models: ['MDX', 'RDX', 'TLX'],
-  },
-  {
-    name: 'Honda',
-    models: ['Pilot', 'Civic Type R', 'NSX'],
   },
 ];
 
@@ -112,7 +97,7 @@ export const AMERICAN_BRANDS: Brand[] = [
   },
 ];
 
-export const BRAND_NOTE = 'Lexus, Infiniti and Acura — the luxury divisions of Toyota, Nissan and Honda.';
+export const BRAND_NOTE = 'Lexus and Infiniti — Japanese luxury automotive marques.';
 
 // ── Featured Vehicles ────────────────────────────────────────────
 export interface FeaturedVehicle {
@@ -198,44 +183,28 @@ export const FEATURED_VEHICLES: FeaturedVehicle[] = [
     imageComment: 'Lexus LX 600 studio photography',
   },
   {
-    name: 'Toyota Land Cruiser 300',
-    brand: 'Toyota',
-    region: 'Japan',
-    image: '/vehicles/toyota-lc300.jpg',
-    note: 'Desert-proven servicing for the icon — engine, suspension and full diagnostics.',
-    imageComment: 'Toyota Land Cruiser 300',
-  },
-  {
-    name: 'Nissan Patrol NISMO',
-    brand: 'Nissan',
-    region: 'Japan',
-    image: '/vehicles/Nissan/nismo.jpg',
-    note: 'Comprehensive Patrol servicing — from V8 engine work to full inspection.',
-    imageComment: 'Nissan Patrol NISMO',
-  },
-  {
     name: 'Infiniti QX80',
     brand: 'Infiniti',
     region: 'Japan',
     image: '/vehicles/infiniti-qx80.jpg',
     note: 'Luxury SUV care — engine, AC, electronics and interior attention.',
-    imageComment: 'Infiniti QX80',
+    imageComment: 'Infiniti QX80 flagship luxury SUV',
   },
   {
-    name: 'Acura MDX Type S',
-    brand: 'Acura',
+    name: 'Lexus LC 500',
+    brand: 'Lexus',
     region: 'Japan',
-    image: '/vehicles/Acura/acuramdx.jpg',
-    note: 'Precision crafted performance — SH-AWD calibration, turbo diagnostics.',
-    imageComment: 'Acura MDX Type S',
+    image: '/vehicles/Lexus/lc500.jpg',
+    note: 'Naturally aspirated 5.0L V8 grand tourer care — precision telemetry, brake and transmission service.',
+    imageComment: 'Lexus LC 500 performance coupe',
   },
   {
-    name: 'Honda Civic Type R',
-    brand: 'Honda',
+    name: 'Infiniti Q60 Red Sport',
+    brand: 'Infiniti',
     region: 'Japan',
-    image: '/vehicles/Honda/hondacivictype-r.jpg',
-    note: 'Track-proven Japanese performance — Brembo brakes, VTEC turbo maintenance.',
-    imageComment: 'Honda Civic Type R',
+    image: '/vehicles/Infinity/Q60.jpg',
+    note: 'VR30DDTT 3.0L Twin-Turbo calibration, cooling management, and electronic steering diagnostics.',
+    imageComment: 'Infiniti Q60 Red Sport twin-turbo performance',
   },
 ];
 
@@ -250,12 +219,12 @@ export const SERVICES: Service[] = [
   {
     icon: 'Cog',
     title: 'Engine Repair & Diagnostics',
-    description: 'Precision diagnostics and mechanical overhaul for American V8, EcoBoost, HEMI, Supercharged LT4/LT6 and Japanese V6 twin-turbo engines using factory OEM diagnostic scan tools.',
+    description: 'Precision diagnostics and mechanical overhaul for American V8, EcoBoost, HEMI, Supercharged LT4/LT6 and Japanese V6 twin-turbo engines using factory-level diagnostic scan tools.',
   },
   {
     icon: 'Settings2',
     title: 'Transmission Repair',
-    description: 'Specialist service and rebuilds for GM/Ford 10-speed, Chrysler 8-speed Torqueflite, Allison transmissions, dual-clutch supercars, and Japanese Lexus/Toyota multi-stage units.',
+    description: 'Specialist service and rebuilds for GM/Ford 10-speed, Chrysler 8-speed Torqueflite, Allison transmissions, dual-clutch supercars, and Japanese Lexus/Infiniti multi-stage units.',
   },
   {
     icon: 'Gauge',
@@ -265,7 +234,7 @@ export const SERVICES: Service[] = [
   {
     icon: 'Disc',
     title: 'Brake Repair & Upgrades',
-    description: 'High-performance brake servicing — Brembo, SRT, and OEM calipers, cross-drilled rotors, electronic park brake calibration, and factory brake fluid flush.',
+    description: 'High-performance brake servicing — Brembo, SRT, and factory-original calipers, cross-drilled rotors, electronic park brake calibration, and factory brake fluid flush.',
   },
   {
     icon: 'Snowflake',
@@ -280,7 +249,7 @@ export const SERVICES: Service[] = [
   {
     icon: 'Droplets',
     title: 'Scheduled Oil & Filter Service',
-    description: 'Strict factory-interval servicing using Dexos-approved, Motorcraft, and OEM full-synthetic fluids and genuine filters to preserve manufacturer warranties.',
+    description: 'Strict factory-interval servicing using Dexos-approved, Motorcraft, and dealership-approved full-synthetic fluids and genuine filters to preserve manufacturer warranties.',
   },
   {
     icon: 'ClipboardCheck',
@@ -294,12 +263,12 @@ export const WHY_CHOOSE_US = [
   {
     icon: 'BadgeCheck',
     title: 'Certified Master Technicians',
-    text: 'Our technicians are factory-certified American and Japanese automotive specialists equipped with OEM GM, Ford, Chrysler, and Lexus scan tools — not general mechanics.',
+    text: 'Our technicians are factory-certified American and Japanese automotive specialists equipped with official GM, Ford, Chrysler, and Lexus scan tools — not general mechanics.',
   },
   {
     icon: 'PackageCheck',
-    title: 'Genuine & OEM Parts',
-    text: 'We fit 100% genuine AC Delco, Motorcraft, Mopar, and Japanese OEM parts, guaranteeing uncompromising reliability, warranty compliance, and optimal performance.',
+    title: '100% Genuine Parts',
+    text: 'We fit 100% genuine AC Delco, Motorcraft, Mopar, and Japanese parts, guaranteeing uncompromising reliability, warranty compliance, and optimal performance.',
   },
   {
     icon: 'ScanLine',
@@ -337,7 +306,7 @@ export interface GalleryImage {
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
-    image: '/hero-american-cadillac-flagship.jpg',
+    image: '/hero-workshop-euroexperts-flagship.jpg',
     alt: 'Cadillac Escalade-V & GMC Yukon Denali in Euro Experts flagship Dubai workshop atelier',
     comment: 'Flagship American Luxury Atelier Bay with digital telemetry console',
     span: 'wide',
@@ -373,9 +342,9 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     span: 'normal',
   },
   {
-    image: '/gallery-toyota-lc300.jpg',
-    alt: 'Toyota Land Cruiser 300 chassis and suspension inspection on 2-post lift',
-    comment: 'Toyota Land Cruiser 300 elevated on 2-post lift with master technician',
+    image: '/gallery-infiniti-qx80.jpg',
+    alt: 'Infiniti QX80 luxury SUV multi-point calibration and inspection in Euro Experts atelier',
+    comment: 'Infiniti QX80 luxury powertrain and diagnostic bay',
     span: 'normal',
   },
   {
@@ -427,9 +396,9 @@ export const REVIEWS: Review[] = [
   },
   {
     name: 'Khalid Al Rashid',
-    vehicle: 'Toyota Land Cruiser 300',
+    vehicle: 'Infiniti QX80',
     rating: 5,
-    text: 'My Land Cruiser gets the attention it deserves here. Genuine OEM parts, meticulous cleanliness, and the team knows the LC300 platform inside out.',
+    text: 'My QX80 gets the attention it deserves here. 100% genuine parts, meticulous cleanliness, and the team knows the Infiniti luxury platform inside out.',
   },
 ];
 
@@ -444,28 +413,32 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: 'Do you specialise in American luxury brands like Cadillac, GMC, Lincoln, Ford, Chevrolet, Jeep and Dodge?',
-    answer: 'Yes. We are Dubai\'s premier specialist atelier for American automotive marques. From Cadillac Escalade and CT5-V, GMC Yukon Denali, Lincoln Navigator, Ford Raptor and Mustang, Chevrolet Corvette and Tahoe, to Jeep Grand Wagoneer and Dodge Hellcat, our master technicians use factory-level diagnostic systems (GM Techline, Ford IDS/FDRS, WiTech) and genuine OEM parts.',
+    question: 'Which American vehicle brands and models do you specialize in?',
+    answer: 'We are Dubai\'s dedicated specialist workshop for American luxury, performance, and heavy-duty vehicles. We provide full dealership-grade care for Cadillac (Escalade, Escalade-V, CT5-V Blackwing, XT6), GMC (Yukon Denali, Sierra, AT4), Lincoln (Navigator, Aviator, Nautilus), Ford (F-150 Raptor, Ranger Raptor, Mustang, Expedition), Chevrolet (Corvette Stingray/Z06, Tahoe, Suburban, Silverado), Jeep (Wrangler, Grand Cherokee, Grand Wagoneer), and Dodge (Charger, Challenger, Durango SRT & Hellcat).',
   },
   {
-    question: 'Do you also service Japanese luxury vehicles like Lexus and Land Cruiser?',
-    answer: 'Absolutely. Alongside our American vehicle expertise, we provide full dealership-level maintenance for Lexus LX 600, Toyota Land Cruiser 300, Nissan Patrol NISMO, Infiniti, and Acura with certified Japanese platform technicians.',
+    question: 'What factory diagnostic tools do you use for American vehicles?',
+    answer: 'We utilize official dealership-level diagnostic software and scanners — including GM Techline Connect & GDS2 for Cadillac and GMC, Ford IDS & FDRS for Lincoln and Ford, and WiTech 2.0 for Jeep, Dodge, and RAM. This enables us to perform complex ECU programming, key coding, electronic suspension calibration, and module flashing identical to the agency.',
   },
   {
-    question: 'Do you use genuine and OEM parts?',
-    answer: 'Exclusively. We install only genuine OEM-grade parts (ACDelco, Motorcraft, Mopar, and genuine Japanese parts). This guarantees optimal performance, factory warranty protection, and preserves the resale value of your vehicle.',
+    question: 'Do you use 100% genuine parts for American cars?',
+    answer: 'Exclusively. We install only 100% genuine parts directly from official manufacturer lines: ACDelco for General Motors (Cadillac & GMC), Motorcraft for Ford & Lincoln, and genuine Mopar for Jeep, Dodge, and Chrysler. Every part meets exact factory tolerances to maintain your vehicle\'s performance, safety, and warranty integrity.',
   },
   {
-    question: 'Do I get a transparent quote before work begins?',
-    answer: 'Always. You receive a clear, comprehensive digital itemised estimate detailing parts, labour, and diagnostics before any work begins. Nothing proceeds without your explicit approval. No surprises, no hidden fees.',
+    question: 'Can you service high-performance American engines like HEMI, Hellcat, Corvette, and EcoBoost?',
+    answer: 'Yes. Our master mechanics specialize in high-output American powertrains — including 6.2L Supercharged Hellcat & Demon V8s, naturally aspirated and supercharged Corvette LT2/LT4/LT6 engines, GM 6.2L EcoTec3 V8s, Chrysler 5.7L/6.4L 392 HEMIs, and Ford twin-turbo 3.5L EcoBoost High Output engines.',
   },
   {
-    question: 'Do you offer comprehensive Pre-Purchase Inspections (PPI)?',
-    answer: 'Yes. We provide a meticulous 200-point Pre-Purchase Inspection with digital paint depth measurement, full ECU computer scans, suspension and chassis inspection, and road testing with an exhaustive written report before you buy a pre-owned luxury vehicle in the UAE.',
+    question: 'Do you repair American 10-speed / 8-speed transmissions and magnetic ride suspensions?',
+    answer: 'Yes. We specialize in GM/Ford joint 10-speed transmissions (10L80, 10L90, 10R80), Chrysler/Mopar Torqueflite 8-speed (ZF 8HP) gearboxes, and heavy-duty Allison transmissions. We also calibrate and service GM Magnetic Ride Control, Lincoln adaptive air suspension, and Ford FOX Live Valve off-road dampers.',
+  },
+  {
+    question: 'Do you offer Pre-Purchase Inspections (PPI) for American trucks, SUVs, and muscle cars?',
+    answer: 'Yes. We provide an exhaustive 200-point inspection specifically structured for American vehicles — assessing 4x4 transfer cases, differential locks, transmission shift telemetry, engine health, frame and chassis condition, paint meter depth readings, and hidden ECU fault history before you buy any pre-owned American vehicle in Dubai.',
   },
   {
     question: 'Where is your workshop located and what are your operating hours?',
-    answer: 'We are conveniently located at 29 4 St, Al Quoz Industrial Area 4, Dubai, UAE with swift access from Sheikh Zayed Road and Al Khail Road. We are open Monday to Sunday, 8:00 AM to 6:00 PM, 7 days a week.',
+    answer: 'We are conveniently located at 29 4 St, Al Quoz Industrial Area 4, Dubai, UAE with effortless access from Sheikh Zayed Road and Al Khail Road. We are open Monday to Sunday, 8:00 AM to 6:00 PM, 7 days a week.',
   },
 ];
 

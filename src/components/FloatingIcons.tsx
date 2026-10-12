@@ -81,6 +81,29 @@ function GmailOfficialIcon({ className = 'w-5 h-5' }: { className?: string }) {
   );
 }
 
+function InstagramOfficialIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none">
+      {/* Instagram gradient background */}
+      <defs>
+        <radialGradient id="ig-grad" cx="30%" cy="107%" r="140%">
+          <stop offset="0%" stopColor="#fdf497" />
+          <stop offset="5%" stopColor="#fdf497" />
+          <stop offset="45%" stopColor="#fd5949" />
+          <stop offset="60%" stopColor="#d6249f" />
+          <stop offset="90%" stopColor="#285AEB" />
+        </radialGradient>
+      </defs>
+      <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad)" />
+      <rect x="2" y="2" width="20" height="20" rx="5.5" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
+      {/* Camera lens ring */}
+      <circle cx="12" cy="12" r="4" stroke="#fff" strokeWidth="1.6" fill="none" />
+      {/* Camera dot */}
+      <circle cx="17" cy="7" r="1" fill="#fff" />
+    </svg>
+  );
+}
+
 const items: OfficialFloatingItem[] = [
   {
     id: 'whatsapp',
@@ -112,6 +135,14 @@ const items: OfficialFloatingItem[] = [
     href: `mailto:${BUSINESS.email}`,
     icon: <GmailOfficialIcon className="w-6 h-6" />,
     badgeColor: 'border-red-500/50 hover:border-red-400 hover:shadow-red-500/30',
+  },
+  {
+    id: 'instagram',
+    label: 'Follow on Instagram',
+    href: 'https://www.instagram.com/euroexpertsauto/?hl=en',
+    icon: <InstagramOfficialIcon className="w-6 h-6" />,
+    badgeColor: 'border-pink-500/50 hover:border-pink-400 hover:shadow-pink-500/30',
+    external: true,
   },
 ];
 
