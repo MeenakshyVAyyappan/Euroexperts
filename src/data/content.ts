@@ -306,19 +306,19 @@ export interface GalleryImage {
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
-    image: '/hero-workshop-euroexperts-flagship.jpg',
+    image: '/gallery-euroexperts-flagship-escalade-v2.jpg',
     alt: 'Cadillac Escalade-V & GMC Yukon Denali in Euro Experts flagship Dubai workshop atelier',
     comment: 'Flagship American Luxury Atelier Bay with digital telemetry console',
     span: 'wide',
   },
   {
-    image: '/gallery-ford-lincoln-service.jpg',
-    alt: 'Lincoln Navigator on hydraulic lift and Ford Raptor in laser alignment bay',
-    comment: 'Lincoln & Ford specialist suspension calibration atelier bay',
+    image: '/gallery-euroexperts-ford-lincoln.jpg',
+    alt: 'Lincoln Navigator on hydraulic lift and Ford Raptor in laser alignment bay at Euro Experts Dubai atelier',
+    comment: 'Lincoln & Ford specialist suspension calibration atelier bay at Euro Experts Dubai',
     span: 'tall',
   },
   {
-    image: '/gallery-corvette-service.jpg',
+    image: '/gallery-euroexperts-corvette-service.jpg',
     alt: 'Chevrolet Corvette C8 diagnostic telemetry scan in Euro Experts Dubai workshop atelier',
     comment: 'Corvette C8 supercar telemetry & Euro Experts diagnostic atelier',
     span: 'normal',
@@ -336,9 +336,9 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     span: 'tall',
   },
   {
-    image: '/american-dodge-challenger-hellcat.jpg',
-    alt: 'Dodge Challenger SRT Hellcat supercharged HEMI maintenance & Durango SRT tuning',
-    comment: 'Mopar SRT performance supercharger & powertrain bay',
+    image: '/gallery-euroexperts-dodge-hellcat.jpg',
+    alt: 'Dodge Challenger SRT Hellcat supercharged HEMI maintenance & Durango SRT tuning at Euro Experts atelier',
+    comment: 'Mopar SRT performance supercharger & powertrain bay at Euro Experts Dubai',
     span: 'normal',
   },
   {
