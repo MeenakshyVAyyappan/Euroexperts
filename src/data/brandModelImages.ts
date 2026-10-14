@@ -134,5 +134,5 @@ export function getVehicleImage(brand: string, model?: string): string {
   if (model && MODEL_IMAGES[brand]?.[model]) {
     return MODEL_IMAGES[brand][model];
   }
-  return BRAND_DEFAULT_IMAGES[brand] || '/vehicles/lexus-lx600.jpg';
+  return BRAND_DEFAULT_IMAGES[brand] || '/vehicles/Lexus/lx600.jpg';
 }
