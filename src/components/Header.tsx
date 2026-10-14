@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShieldCheck } from 'lucide-react';
 import { BUSINESS, NAV_LINKS } from '@/data/content';
 
-export default function Header() {
+interface HeaderProps {
+  onOpenCertificate?: () => void;
+}
+
+export default function Header({ onOpenCertificate }: HeaderProps = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -67,7 +71,19 @@ export default function Header() {
           </nav>
 
           {/* Book button + mobile toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {onOpenCertificate && (
+              <button
+                type="button"
+                onClick={onOpenCertificate}
+                className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white bg-gold/15 hover:bg-gold/25 border border-gold/40 px-3.5 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                title="View official ISO 9001:2015 Certificate"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-gold" />
+                <span>ISO 9001</span>
+              </button>
+            )}
+
             <a
               href={BUSINESS.whatsappLink}
               target="_blank"
@@ -115,6 +131,21 @@ export default function Header() {
                 {link.label}
               </motion.button>
             ))}
+
+            {onOpenCertificate && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  onOpenCertificate();
+                }}
+                className="inline-flex items-center gap-2 text-gold hover:text-white font-serif text-xl border-b border-gold/40 pb-1 cursor-pointer"
+              >
+                <ShieldCheck className="w-5 h-5" />
+                <span>ISO 9001 Certificate</span>
+              </button>
+            )}
+
             <a
               href={BUSINESS.whatsappLink}
               target="_blank"

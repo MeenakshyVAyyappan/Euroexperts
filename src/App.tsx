@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Preloader from '@/components/Preloader';
 import CustomCursor from '@/components/CustomCursor';
 import FloatingIcons from '@/components/FloatingIcons';
 import Header from '@/components/Header';
 import Hero from '@/components/sections/Hero';
 import TrustBar from '@/components/sections/TrustBar';
+import ISOCertificate from '@/components/sections/ISOCertificate';
 import BrandMarquee from '@/components/sections/BrandMarquee';
 import BrandSwitcher from '@/components/sections/BrandSwitcher';
 import FeaturedVehicles from '@/components/sections/FeaturedVehicles';
 import Services from '@/components/sections/Services';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import Team from '@/components/sections/Team';
 import Process from '@/components/sections/Process';
 import Gallery from '@/components/sections/Gallery';
 import Reviews from '@/components/sections/Reviews';
@@ -17,9 +19,11 @@ import FAQ from '@/components/sections/FAQ';
 import BookingCTA from '@/components/sections/BookingCTA';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/sections/Footer';
+import ISOCertificateModal from '@/components/ui/ISOCertificateModal';
 import { BUSINESS } from '@/data/content';
 
 function App() {
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   useEffect(() => {
     // SEO: Set document title and meta description
     document.title = 'Euro Experts Auto Services | Premier American & Japanese Luxury Car Workshop Dubai';
@@ -77,16 +81,18 @@ function App() {
       <CustomCursor />
       <div className="film-grain" />
       <FloatingIcons />
-      <Header />
+      <Header onOpenCertificate={() => setIsCertModalOpen(true)} />
 
       <main>
-        <Hero />
-        <TrustBar />
+        <Hero onOpenCertificate={() => setIsCertModalOpen(true)} />
+        <TrustBar onOpenCertificate={() => setIsCertModalOpen(true)} />
+        <ISOCertificate onOpenCertificate={() => setIsCertModalOpen(true)} />
         <BrandMarquee />
         <BrandSwitcher />
         <FeaturedVehicles />
         <Services />
-        <WhyChooseUs />
+        <WhyChooseUs onOpenCertificate={() => setIsCertModalOpen(true)} />
+        <Team />
         <Process />
         <Gallery />
         <Reviews />
@@ -95,7 +101,11 @@ function App() {
         <Contact />
       </main>
 
-      <Footer />
+      <Footer onOpenCertificate={() => setIsCertModalOpen(true)} />
+      <ISOCertificateModal
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+      />
     </>
   );
 }

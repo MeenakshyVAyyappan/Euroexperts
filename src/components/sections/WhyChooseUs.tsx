@@ -7,7 +7,11 @@ const iconMap: Record<string, typeof BadgeCheck> = {
   BadgeCheck, PackageCheck, ScanLine, ReceiptText, MapPin,
 };
 
-export default function WhyChooseUs() {
+interface WhyChooseUsProps {
+  onOpenCertificate?: () => void;
+}
+
+export default function WhyChooseUs({ onOpenCertificate }: WhyChooseUsProps = {}) {
   return (
     <section id="why-us" className="relative py-12 lg:py-16 bg-[#181B26] overflow-hidden">
       {/* Studio ambient lighting and warm radiant light pools */}
@@ -90,15 +94,28 @@ export default function WhyChooseUs() {
               })}
 
               <Reveal delay={0.3}>
-                <a
-                  href={BUSINESS.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 mt-4 bg-gold-gradient text-obsidian font-semibold text-sm px-8 py-4 rounded-full shadow-xl shadow-gold/25 hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shimmer-line"
-                >
-                  <span>Book Your Service</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                <div className="flex flex-wrap items-center gap-4 mt-5">
+                  <a
+                    href={BUSINESS.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 bg-gold-gradient text-obsidian font-semibold text-sm px-8 py-3.5 rounded-full shadow-xl shadow-gold/25 hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shimmer-line"
+                  >
+                    <span>Book Your Service</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+
+                  {onOpenCertificate && (
+                    <button
+                      type="button"
+                      onClick={onOpenCertificate}
+                      className="inline-flex items-center gap-2 bg-white/[0.05] hover:bg-gold/15 border border-gold/45 text-gold hover:text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all duration-300 cursor-pointer"
+                    >
+                      <span>View ISO Certificate</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
               </Reveal>
             </div>
           </div>

@@ -280,7 +280,7 @@ export default function BrandSwitcher() {
                 onError={(e) => {
                   // Fallback to default brand vehicle image if model fails
                   const target = e.currentTarget;
-                  const defaultImg = BRAND_DEFAULT_IMAGES[currentBrand.name] || '/vehicles/Lexus/lx600.jpg';
+                  const defaultImg = fallbackImageUrl || '/vehicles/Lexus/lx600.jpg';
                   if (!target.src.endsWith(defaultImg)) {
                     target.src = defaultImg;
                   }

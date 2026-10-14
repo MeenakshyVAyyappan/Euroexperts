@@ -1,7 +1,100 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { MessageCircle, Phone, ChevronDown, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MessageCircle, Phone, ChevronDown, Sparkles, ChevronLeft, ChevronRight, ExternalLink, Maximize2, ShieldCheck, Award } from 'lucide-react';
 import { BUSINESS } from '@/data/content';
+
+interface HeroProps {
+  onOpenCertificate?: () => void;
+}
+
+function ISORoundGoldSeal({ className = 'w-24 h-24' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 120" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldMedalGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#FFF1B8" />
+          <stop offset="0.2" stopColor="#FFA048" />
+          <stop offset="0.5" stopColor="#FFD188" />
+          <stop offset="0.8" stopColor="#FF9800" />
+          <stop offset="1" stopColor="#D97706" />
+        </linearGradient>
+        <radialGradient id="sealDiscGrad" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#241B10" />
+          <stop offset="60%" stopColor="#15121A" />
+          <stop offset="100%" stopColor="#0B0D13" />
+        </radialGradient>
+        <path id="sealTopArc" d="M 22,60 A 38,38 0 0,1 98,60" fill="none" />
+        <path id="sealBottomArc" d="M 98,60 A 38,38 0 0,1 22,60" fill="none" />
+      </defs>
+
+      {/* Sunburst Teeth Rays */}
+      <g stroke="url(#goldMedalGrad)" strokeWidth="1.3" opacity="0.95">
+        {Array.from({ length: 36 }).map((_, i) => {
+          const angle = (i * 360) / 36;
+          const rad = (angle * Math.PI) / 180;
+          const x1 = 60 + 51 * Math.cos(rad);
+          const y1 = 60 + 51 * Math.sin(rad);
+          const x2 = 60 + 57 * Math.cos(rad);
+          const y2 = 60 + 57 * Math.sin(rad);
+          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} strokeLinecap="round" />;
+        })}
+      </g>
+
+      {/* Outer concentric rings */}
+      <circle cx="60" cy="60" r="51" stroke="url(#goldMedalGrad)" strokeWidth="2.5" />
+      <circle cx="60" cy="60" r="46.5" stroke="url(#goldMedalGrad)" strokeWidth="1" strokeDasharray="2 2" />
+      <circle cx="60" cy="60" r="44" fill="url(#sealDiscGrad)" stroke="url(#goldMedalGrad)" strokeWidth="1.5" />
+
+      {/* Top curved text "CERTIFIED" */}
+      <text fill="#FFE082" fontSize="9.5" fontWeight="900" letterSpacing="0.22em" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.9))' }}>
+        <textPath href="#sealTopArc" startOffset="50%" textAnchor="middle">
+          CERTIFIED
+        </textPath>
+      </text>
+
+      {/* Bottom curved text "CERTIFIED" */}
+      <text fill="#FFE082" fontSize="9.5" fontWeight="900" letterSpacing="0.22em" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.9))' }}>
+        <textPath href="#sealBottomArc" startOffset="50%" textAnchor="middle">
+          CERTIFIED
+        </textPath>
+      </text>
+
+      {/* Left and Right 5-point stars */}
+      <polygon points="21,60 22.5,63 26,63.5 23.5,66 24,69.5 21,67.5 18,69.5 18.5,66 16,63.5 19.5,63" fill="#FFE082" />
+      <polygon points="99,60 100.5,63 104,63.5 101.5,66 102,69.5 99,67.5 96,69.5 96.5,66 94,63.5 97.5,63" fill="#FFE082" />
+
+      {/* Central horizontal plaque with ISO 9001 */}
+      <rect x="18" y="48" width="84" height="24" rx="3.5" fill="#131623" stroke="url(#goldMedalGrad)" strokeWidth="1" />
+      <text
+        x="60"
+        y="65.5"
+        textAnchor="middle"
+        fill="url(#goldMedalGrad)"
+        fontFamily="system-ui, -apple-system, 'SF Pro Display', Arial, sans-serif"
+        fontWeight="900"
+        fontSize="17"
+        letterSpacing="0.08em"
+        style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.9))' }}
+      >
+        ISO 9001
+      </text>
+
+      {/* Sub-label under ISO 9001 */}
+      <text
+        x="60"
+        y="83"
+        textAnchor="middle"
+        fill="#FFD188"
+        fontFamily="system-ui, -apple-system, sans-serif"
+        fontWeight="700"
+        fontSize="5"
+        letterSpacing="0.22em"
+      >
+        QUALITY SYSTEM
+      </text>
+    </svg>
+  );
+}
 
 const HEADLINE_WORDS = ['Specialists', 'in', 'American', '&', 'Premium', 'Vehicles'];
 
@@ -141,7 +234,7 @@ const HERO_WORKSHOP_SLIDES = [
   },
 ];
 
-export default function Hero() {
+export default function Hero({ onOpenCertificate }: HeroProps = {}) {
   const ref = useRef<HTMLElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
@@ -213,7 +306,6 @@ export default function Hero() {
   });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const yText = useTransform(scrollYProgress, [0, 0.5], ['0%', '25%']);
 
   const activeSlide = HERO_WORKSHOP_SLIDES[currentSlideIndex];
 
@@ -240,18 +332,15 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: 'easeInOut' }}
-            className="w-full h-full object-cover object-center absolute inset-0 brightness-[0.94] contrast-[1.08]"
+            className="w-full h-full object-cover object-center absolute inset-0 brightness-[1.0] contrast-[1.05]"
           />
         </AnimatePresence>
 
-        {/* Refined Studio Gradients for contrast and typography legibility */}
-        <div className="absolute inset-x-0 top-0 h-36 sm:h-44 bg-gradient-to-b from-[#0F1118]/85 via-[#0F1118]/35 to-transparent pointer-events-none" />
-
-        {/* Center contrast vignette balanced for clear vehicle visibility & razor-sharp text legibility */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,12,18,0.58)_0%,rgba(10,12,18,0.26)_55%,transparent_90%)] pointer-events-none" />
+        {/* Top subtle header gradient for logo/nav contrast */}
+        <div className="absolute inset-x-0 top-0 h-28 sm:h-32 bg-gradient-to-b from-[#0B0D14]/80 via-[#0B0D14]/20 to-transparent pointer-events-none" />
 
         {/* Seamless bottom transition into TrustBar */}
-        <div className="absolute inset-x-0 bottom-0 h-36 sm:h-44 bg-gradient-to-t from-[#141620] via-[#141620]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#141620] via-[#141620]/70 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* ── Ultra-Premium Studio Illumination Effects ── */}
@@ -267,127 +356,207 @@ export default function Hero() {
       {/* 4. Elegant studio horizon rim line */}
       <div className="absolute top-[58%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-60 pointer-events-none" />
 
-      {/* Main Content Area: Centered with responsive padding and clearance for Header */}
+      {/* Main Content Area: Executive Split Layout on Desktop, Fluid Stacked on Mobile */}
       <motion.div
-        style={{ opacity, y: yText }}
-        className="relative z-10 w-full flex-1 flex flex-col items-center justify-center text-center px-4 xs:px-5 sm:px-6 max-w-6xl mx-auto pt-20 xs:pt-24 sm:pt-28 lg:pt-36 pb-4 sm:pb-6"
+        style={{ opacity }}
+        className="relative z-10 w-full flex-1 flex flex-col justify-center px-4 xs:px-5 sm:px-6 lg:px-12 max-w-7xl mx-auto pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-4 sm:pb-6"
       >
-        {/* Client Priority Highlight: Dubai's ISO-Certified Dealer Alternative with 10+ Years of Experience · Al Quoz, Dubai */}
-        <motion.div
-          initial={{ opacity: 0, y: 18, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 3.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          whileHover={{ scale: 1.02, y: -2 }}
-          className="group relative inline-flex items-center mb-4 xs:mb-5 sm:mb-7 cursor-default max-w-full px-1"
-        >
-          {/* Ambient gold glow aura */}
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-gold/30 via-amber-500/20 to-gold/30 blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Left Column (7 cols): Client's Authority Headline & Content with High-Contrast Text Backgrounds */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start w-full text-center lg:text-left">
+            {/* Top Status Pill with frosted text background */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.1, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-gold/50 text-xs sm:text-sm text-white font-bold mb-3 sm:mb-4 shadow-xl shadow-black/70"
+            >
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              <span className="text-white font-bold">Dubai's Premier Dealer Alternative</span>
+              <span className="text-gold font-bold">·</span>
+              <span className="text-gold font-bold">Al Quoz, Dubai</span>
+            </motion.div>
 
-          {/* Frosted glass inner capsule with ISO Certification */}
-          <div className="relative flex items-center gap-2.5 xs:gap-3 sm:gap-4 px-3.5 xs:px-4.5 sm:px-6 py-2 xs:py-2.5 sm:py-2.5 rounded-full bg-[#111215]/90 border border-gold/45 hover:border-gold backdrop-blur-2xl shadow-2xl shadow-black/70 transition-all duration-300">
-            {/* Official ISO 9001:2015 Seal Logo - Prominent Size */}
-            <div className="relative shrink-0 flex items-center justify-center">
-              <span className="absolute -inset-1.5 rounded-full bg-gold/30 blur-xs animate-pulse" />
-              <ISOCertifiedLogo className="w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-13 md:h-13 relative z-10 drop-shadow-[0_0_12px_rgba(255,160,72,0.7)]" />
-            </div>
-
-            {/* Highlight Copy: Grouped for natural, elegant wrapping on all mobile screens */}
-            <div className="relative flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs xs:text-sm sm:text-base font-sans tracking-wide">
-              <div className="inline-flex items-center gap-1.5 xs:gap-2">
-                <span className="text-white/95 font-medium drop-shadow-sm">Dubai's</span>
-                <span className="bg-gradient-to-r from-[#FFA048] via-[#FFD188] to-[#FF6200] text-[#0B0D13] font-black text-[10px] xs:text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full shadow-lg uppercase tracking-wider">
+            {/* Main Headline with Tailored Frosted Glass Text Background */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.3, duration: 0.6 }}
+              className="w-full max-w-2xl p-4 sm:p-5 lg:p-6 rounded-2xl bg-black/65 backdrop-blur-md border border-white/15 shadow-2xl shadow-black/80 text-center lg:text-left"
+            >
+              <h1 className="font-serif text-[1.45rem] xs:text-[1.7rem] sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.85rem] text-white leading-[1.2] sm:leading-[1.18] tracking-tight">
+                <span className="text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                  10+ Years
+                </span>{' '}
+                <span className="text-white font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                  of Automotive Excellence
+                </span>
+                <span className="block mt-1 sm:mt-2 text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-[1.3rem] xs:text-[1.5rem] sm:text-2xl md:text-3xl lg:text-[2.4rem]">
+                  <span className="text-white/60 font-bold mr-2">—</span>
                   ISO-Certified
                 </span>
-                <span className="text-white font-semibold drop-shadow-sm">Dealer Alternative</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 xs:gap-2">
-                <span className="text-ivory/80 font-normal">with</span>
-                <span className="text-gold font-bold tracking-wide drop-shadow-[0_0_10px_rgba(255,98,0,0.5)] whitespace-nowrap">
-                  10+ Years of Experience
-                </span>
-                <span className="text-gold/60 font-serif">·</span>
-                <span className="text-gold font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(255,98,0,0.4)] whitespace-nowrap">
-                  Al Quoz, Dubai
-                </span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+              </h1>
+            </motion.div>
 
-        {/* Main Headline: Fluid scaling for every mobile device with letter descender protection */}
-        <h1 className="font-serif text-[1.85rem] xs:text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.25rem] text-white leading-[1.20] sm:leading-[1.15] tracking-tight max-w-5xl [text-shadow:_0_4px_24px_rgba(0,0,0,0.95),_0_8px_48px_rgba(0,0,0,0.9)]">
-          {HEADLINE_WORDS.map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden pt-1 -mt-1 pb-4 -mb-4 mr-[0.22em] sm:mr-[0.25em]">
-              <motion.span
-                initial={{ y: '110%' }}
-                animate={{ y: 0 }}
-                transition={{
-                  delay: 3.3 + i * 0.08,
-                  duration: 0.6,
-                  ease: [0.25, 0.1, 0.25, 1],
-                }}
-                className={`inline-block pb-1 ${word === '&' || word === 'in' ? 'text-gold-gradient italic' : ''}`}
+            {/* Sub-copy from Old Website: Visible on Desktop, replaced by ISO Medal on Mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.5, duration: 0.6 }}
+              className="hidden lg:block mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-black/65 backdrop-blur-md border border-white/15 shadow-xl shadow-black/70 max-w-2xl"
+            >
+              <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed drop-shadow-sm">
+                Car service in Dubai designed for quality and reliability, offering advanced diagnostics, precision repairs, and professional performance vehicle servicing as a dependable alternative to dealerships.
+              </p>
+            </motion.div>
+
+            {/* Mobile-Only Prominent ISO 9001 Rosette Badge (replaces description for sleek, punchy mobile UX) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 3.4, duration: 0.6 }}
+              className="lg:hidden my-2.5 xs:my-3 flex flex-col items-center cursor-pointer group"
+              onClick={() => {
+                if (onOpenCertificate) {
+                  onOpenCertificate();
+                } else {
+                  document.querySelector('#iso-certificate')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              title="Tap to view official ISO 9001 Certification"
+            >
+              <div className="relative flex flex-col items-center">
+                {/* Soft ambient gold halo */}
+                <div className="absolute -inset-4 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,160,72,0.4)_0%,transparent_70%)] blur-xl pointer-events-none" />
+
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative z-10 flex flex-col items-center"
+                >
+                  <img
+                    src="/ISO/iso-9001-badge.png"
+                    alt="Official Certified ISO 9001 Quality System Medal"
+                    className="w-24 xs:w-28 sm:w-32 h-auto select-none drop-shadow-[0_12px_24px_rgba(0,0,0,0.9)] drop-shadow-[0_0_20px_rgba(255,160,72,0.45)]"
+                    onError={(e) => {
+                      e.currentTarget.src = '/ISO/cert.png';
+                    }}
+                  />
+
+                  {/* Verified Accreditation Pill underneath */}
+                  <div className="mt-1.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 border border-gold/50 text-gold text-[11px] font-bold backdrop-blur-md shadow-lg shadow-black/80">
+                    <ShieldCheck className="w-3 h-3 text-gold" />
+                    <span>ISO 9001:2015 Certified Workshop</span>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Specialist Marques Strip: Balanced & High-Contrast on all screen sizes */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.7, duration: 0.5 }}
+              className="mt-2.5 sm:mt-4 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 w-full max-w-2xl"
+            >
+              {/* American Chip */}
+              <div className="w-full sm:w-auto inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 px-3.5 sm:px-4 py-2 sm:py-1.5 rounded-2xl sm:rounded-full bg-black/80 backdrop-blur-md border border-amber-500/50 shadow-xl shadow-black/70 text-center">
+                <span className="bg-gradient-to-r from-[#FFA048] to-[#FF6200] text-[#0A0C13] font-black text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm shrink-0">
+                  American
+                </span>
+                <span className="text-white font-semibold text-xs sm:text-sm tracking-wide leading-snug">
+                  Cadillac · Lincoln · GMC · Ford · Corvette · Jeep · Dodge
+                </span>
+              </div>
+
+              {/* Japanese Chip: Always 1 line / single row as requested */}
+              <div className="inline-flex flex-row items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/30 shadow-xl shadow-black/70 shrink-0">
+                <span className="bg-white/20 text-white font-black text-[10px] xs:text-[11px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-white/40 shadow-sm shrink-0">
+                  Japanese
+                </span>
+                <span className="text-white font-semibold text-xs sm:text-sm tracking-wide whitespace-nowrap">
+                  Lexus · Infiniti
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Action Buttons: Desktop Only (Hidden on Mobile because sticky bottom bar provides WhatsApp & Call buttons) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.9, duration: 0.5 }}
+              className="hidden lg:flex mt-4 sm:mt-5 flex-row gap-3 sm:gap-4 w-full max-w-xs xs:max-w-sm sm:max-w-none justify-center lg:justify-start"
+            >
+              <a
+                href={BUSINESS.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#FFA048] via-[#FF8A00] to-[#FF6200] text-[#0A0C13] font-black text-xs xs:text-sm px-7 sm:px-8 py-3.5 rounded-full hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shimmer-line whitespace-nowrap shadow-xl shadow-amber-500/30"
               >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        {/* Client-specified brand positioning strip: Responsive wrap with American marquee priority */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.85, duration: 0.5 }}
-          className="mt-4 xs:mt-5 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 lg:gap-4 max-w-4xl text-xs sm:text-sm text-[#EDE9E1]/90 font-sans [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]"
-        >
-          {/* American Marques - Flagship Priority */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 xs:gap-2 text-center">
-            <span className="shrink-0 text-gold font-semibold uppercase tracking-wider text-[9px] xs:text-[10px] sm:text-[11px] bg-gold/10 border border-gold/40 px-2 xs:px-2.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(255,98,0,0.25)]">
-              American
-            </span>
-            <span className="text-white/95 font-medium text-[11px] xs:text-xs sm:text-sm">
-              Cadillac · Lincoln · GMC · Ford · Chevrolet · Jeep · Dodge
-            </span>
+                <MessageCircle className="w-4 h-4 xs:w-5 xs:h-5 shrink-0" strokeWidth={2.2} />
+                <span>Book on WhatsApp</span>
+              </a>
+              <a
+                href={`tel:${BUSINESS.phone1Tel}`}
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2.5 bg-black/80 hover:bg-[#FFA048] hover:text-[#0A0C13] border-2 border-[#FFA048] text-[#FFA048] font-black text-xs xs:text-sm px-7 sm:px-8 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap shadow-xl shadow-black/70 backdrop-blur-md"
+              >
+                <Phone className="w-4 h-4 xs:w-5 xs:h-5 shrink-0" strokeWidth={2.2} />
+                <span>Call Now</span>
+              </a>
+            </motion.div>
           </div>
 
-          <span className="hidden sm:inline text-gold/40">|</span>
+          {/* Right Column (5 cols): Desktop Only Official Gold ISO 9001 Ribbon Medal */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col items-center justify-center w-full mt-6 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 3.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex flex-col items-center group cursor-pointer"
+              onClick={() => {
+                if (onOpenCertificate) {
+                  onOpenCertificate();
+                } else {
+                  document.querySelector('#iso-certificate')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              title="Click to view official ISO 9001 Certification"
+            >
+              {/* Radiant Warm Gold Atmospheric Halo */}
+              <div className="absolute -inset-6 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,160,72,0.45)_0%,rgba(255,98,0,0.18)_45%,transparent_70%)] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          {/* Japanese Marques */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 xs:gap-2 text-center">
-            <span className="shrink-0 text-white/80 font-medium uppercase tracking-wider text-[9px] xs:text-[10px] sm:text-[11px] bg-white/[0.06] border border-white/20 px-2 xs:px-2.5 py-0.5 rounded-full">
-              Japanese
-            </span>
-            <span className="text-white/90 font-normal text-[11px] xs:text-xs sm:text-sm">
-              Lexus · Infiniti
-            </span>
+              {/* Gentle Luxury Float Physics on the Gold Medal */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                whileHover={{ scale: 1.06, rotate: 1.5 }}
+                className="relative z-10 flex flex-col items-center"
+              >
+                <img
+                  src="/ISO/iso-9001-badge.png"
+                  alt="Official Certified ISO 9001 Quality System Medal"
+                  className="w-48 h-auto xs:w-56 sm:w-64 md:w-72 lg:w-80 select-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] drop-shadow-[0_0_30px_rgba(255,160,72,0.5)] transition-all duration-300"
+                  onError={(e) => {
+                    // Fallback to cert.png if custom filename used
+                    e.currentTarget.src = '/ISO/cert.png';
+                  }}
+                />
+
+                {/* Elegant Verified Accreditation Pill underneath */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="mt-2 sm:mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#12141F]/90 border border-gold/50 text-gold text-xs font-semibold backdrop-blur-xl shadow-xl shadow-black/70 group-hover:bg-gold group-hover:text-obsidian transition-all duration-300"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>ISO 9001:2015 Certified Workshop</span>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
-        </motion.div>
-
-        {/* Action Buttons: Responsive row on mobile & desktop with comfortable touch targets */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4.05, duration: 0.5 }}
-          className="mt-5 xs:mt-6 sm:mt-8 lg:mt-9 flex flex-row gap-2.5 sm:gap-4 w-full max-w-xs xs:max-w-sm sm:max-w-none justify-center px-2"
-        >
-          <a
-            href={BUSINESS.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-gold-gradient text-obsidian font-bold text-xs xs:text-sm px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 lg:py-4 rounded-full hover:shadow-xl hover:shadow-gold/30 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shimmer-line whitespace-nowrap shadow-lg shadow-black/40"
-          >
-            <MessageCircle className="w-4 h-4 xs:w-5 xs:h-5 shrink-0" strokeWidth={2} />
-            <span>Book on WhatsApp</span>
-          </a>
-          <a
-            href={`tel:${BUSINESS.phone1Tel}`}
-            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-obsidian/75 backdrop-blur-md border border-gold/50 text-gold font-semibold text-xs xs:text-sm px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 lg:py-4 rounded-full hover:bg-gold/15 hover:border-gold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap shadow-lg shadow-black/40"
-          >
-            <Phone className="w-4 h-4 xs:w-5 xs:h-5 shrink-0" strokeWidth={2} />
-            <span>Call Now</span>
-          </a>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Interactive Workshop Atelier Slide Switcher: Sits cleanly in flow above sticky mobile bar */}

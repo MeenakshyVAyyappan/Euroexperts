@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BadgeCheck, PackageCheck, ScanLine, ReceiptText } from 'lucide-react';
+import { BadgeCheck, PackageCheck, ScanLine, ReceiptText, ArrowRight, ShieldCheck } from 'lucide-react';
 import { TRUST_ITEMS } from '@/data/content';
 import { Reveal } from '@/components/ui/Primitives';
+
+interface TrustBarProps {
+  onOpenCertificate?: () => void;
+}
 
 const iconMap: Record<string, typeof BadgeCheck> = {
   BadgeCheck,
@@ -54,7 +58,7 @@ function Counter({ value, suffix, decimals = 0, isStatic, staticText }: {
   );
 }
 
-export default function TrustBar() {
+export default function TrustBar({ onOpenCertificate }: TrustBarProps = {}) {
   return (
     <section className="relative py-10 lg:py-12 border-y border-white/12 bg-[#181A26]/90 backdrop-blur-2xl overflow-hidden">
       {/* Studio ambient illumination */}
@@ -94,6 +98,37 @@ export default function TrustBar() {
             );
           })}
         </div>
+
+        {/* ISO 9001:2015 Verified Accreditation Bar */}
+        <Reveal delay={0.4}>
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-center sm:text-left">
+              <div className="w-8 h-8 rounded-lg bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
+              <div className="text-xs text-[#BAC0D2] font-sans">
+                <span className="text-white font-medium">Officially Audited & Certified: </span>
+                <span className="text-gold font-bold">ISO 9001:2015 Quality Management Systems</span>
+                <span className="hidden md:inline text-white/50"> · Facility in Al Quoz, Dubai</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                if (onOpenCertificate) {
+                  onOpenCertificate();
+                } else {
+                  document.querySelector('#iso-certificate')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] hover:bg-gold hover:text-obsidian border border-gold/40 text-gold text-xs font-semibold transition-all duration-300 cursor-pointer group"
+            >
+              <span>View Official Certificate</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

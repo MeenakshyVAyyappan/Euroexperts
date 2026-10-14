@@ -1,7 +1,11 @@
-import { Phone, MessageCircle, Mail, MapPin, Clock, Instagram } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, Instagram, ShieldCheck } from 'lucide-react';
 import { BUSINESS, NAV_LINKS } from '@/data/content';
 
-export default function Footer() {
+interface FooterProps {
+  onOpenCertificate?: () => void;
+}
+
+export default function Footer({ onOpenCertificate }: FooterProps = {}) {
   return (
     <footer className="relative bg-[#13151F] border-t border-white/12 pt-14 pb-20 lg:pb-12 overflow-hidden">
       {/* Top gold horizon line */}
@@ -25,6 +29,19 @@ export default function Footer() {
               Premier automotive service and repair workshop in Dubai. Certified master technicians,
               100% genuine parts, and dealership-grade diagnostic care.
             </p>
+            <div className="mt-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-gold/30">
+              <ShieldCheck className="w-4 h-4 text-gold shrink-0" />
+              <span className="text-xs text-white/90 font-medium">ISO 9001:2015 Quality Certified</span>
+              {onOpenCertificate && (
+                <button
+                  type="button"
+                  onClick={onOpenCertificate}
+                  className="text-xs text-gold hover:text-white font-semibold underline underline-offset-2 ml-1 cursor-pointer"
+                >
+                  View
+                </button>
+              )}
+            </div>
             <div className="flex gap-3 mt-6">
               <a
                 href={BUSINESS.instagramLink}
