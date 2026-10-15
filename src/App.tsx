@@ -86,17 +86,20 @@ function App() {
       <main>
         <Hero onOpenCertificate={() => setIsCertModalOpen(true)} />
         <TrustBar onOpenCertificate={() => setIsCertModalOpen(true)} />
-        <ISOCertificate onOpenCertificate={() => setIsCertModalOpen(true)} />
         <BrandMarquee />
         <BrandSwitcher />
         <FeaturedVehicles />
+        <Team />
         <Services />
         <WhyChooseUs onOpenCertificate={() => setIsCertModalOpen(true)} />
-        <Team />
         <Process />
         <Gallery />
         <Reviews />
         <FAQ />
+        <ISOCertificate
+          onOpenCertificate={() => setIsCertModalOpen(true)}
+          certificateSrc="/ISO/iso02.png"
+        />
         <BookingCTA />
         <Contact />
       </main>

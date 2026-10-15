@@ -27,18 +27,18 @@ export const BUSINESS = {
 
 export const NAV_LINKS = [
   { label: 'Brands', href: '#brands' },
+  { label: 'Team', href: '#team' },
   { label: 'Services', href: '#services' },
   { label: 'Why Us', href: '#why-us' },
-  { label: 'Team', href: '#team' },
   { label: 'Process', href: '#process' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export const TRUST_ITEMS = [
-  { icon: 'BadgeCheck', label: 'Certified Technicians', value: 50, suffix: '+' },
-  { icon: 'PackageCheck', label: 'Genuine Original Parts', value: 100, suffix: '%' },
-  { icon: 'ScanLine', label: 'Advanced Diagnostics', value: 50, suffix: '+' },
+  { icon: 'BadgeCheck', label: 'Certified Technicians', value: 20, suffix: '+' },
+  { icon: 'PackageCheck', label: 'Genuine Parts', value: 100, suffix: '%' },
+  { icon: 'ScanLine', label: 'Advanced Diagnostics', value: 0, suffix: '', isStatic: true, staticText: 'Dealer-Level' },
   { icon: 'ReceiptText', label: 'Transparent Pricing', value: 0, suffix: '', isStatic: true, staticText: 'Always' },
 ];
 

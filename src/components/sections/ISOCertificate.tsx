@@ -49,7 +49,7 @@ const ISO_PILLARS = [
 
 export default function ISOCertificate({
   onOpenCertificate,
-  certificateSrc = '/ISO/cert.png',
+  certificateSrc = '/ISO/iso02.png',
 }: ISOCertificateProps) {
   const [imageError, setImageError] = useState(false);
 

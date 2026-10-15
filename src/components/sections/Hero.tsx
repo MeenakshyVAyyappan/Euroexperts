@@ -364,53 +364,43 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           {/* Left Column (7 cols): Client's Authority Headline & Content with High-Contrast Text Backgrounds */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start w-full text-center lg:text-left">
-            {/* Top Status Pill with frosted text background */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.1, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-gold/50 text-xs sm:text-sm text-white font-bold mb-3 sm:mb-4 shadow-xl shadow-black/70"
-            >
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-              </span>
-              <span className="text-white font-bold">Dubai's Premier Dealer Alternative</span>
-              <span className="text-gold font-bold">·</span>
-              <span className="text-gold font-bold">Al Quoz, Dubai</span>
-            </motion.div>
-
             {/* Main Headline with Tailored Frosted Glass Text Background */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.3, duration: 0.6 }}
-              className="w-full max-w-2xl p-4 sm:p-5 lg:p-6 rounded-2xl bg-black/65 backdrop-blur-md border border-white/15 shadow-2xl shadow-black/80 text-center lg:text-left"
+              transition={{ delay: 3.2, duration: 0.6 }}
+              className="w-full max-w-2xl lg:max-w-3xl p-4 sm:p-5 lg:p-6 rounded-2xl bg-black/65 backdrop-blur-md border border-white/15 shadow-2xl shadow-black/80 text-center lg:text-left"
             >
-              <h1 className="font-serif text-[1.45rem] xs:text-[1.7rem] sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.85rem] text-white leading-[1.2] sm:leading-[1.18] tracking-tight">
-                <span className="text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                  10+ Years
-                </span>{' '}
-                <span className="text-white font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <h1 className="text-[1.35rem] xs:text-[1.55rem] sm:text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] text-white leading-[1.28] sm:leading-[1.18] tracking-tight">
+                <span className="block sm:inline">
+                  <span className="inline-flex items-baseline text-[#FFA048] font-black drop-shadow-[0_2px_10px_rgba(255,160,72,0.5)] mr-2">
+                    <span className="font-sans text-[1.22em] leading-none mr-1">10+</span>
+                    <span className="font-serif">Years</span>
+                  </span>
+                </span>
+                <span className="font-serif font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   of Automotive Excellence
                 </span>
-                <span className="block mt-1 sm:mt-2 text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-[1.3rem] xs:text-[1.5rem] sm:text-2xl md:text-3xl lg:text-[2.4rem]">
+                <span className="block mt-1.5 sm:mt-2 text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-[1.2rem] xs:text-[1.4rem] sm:text-2xl md:text-3xl lg:text-[2.2rem]">
                   <span className="text-white/60 font-bold mr-2">—</span>
                   ISO-Certified
                 </span>
               </h1>
             </motion.div>
 
-            {/* Sub-copy from Old Website: Visible on Desktop, replaced by ISO Medal on Mobile */}
+            {/* Secondary Header: Specialised in American Premium Vehicles */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.5, duration: 0.6 }}
-              className="hidden lg:block mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-black/65 backdrop-blur-md border border-white/15 shadow-xl shadow-black/70 max-w-2xl"
+              transition={{ delay: 3.4, duration: 0.6 }}
+              className="w-full max-w-2xl mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-black/65 backdrop-blur-md border border-white/15 shadow-xl shadow-black/70 text-center lg:text-left"
             >
-              <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed drop-shadow-sm">
-                Car service in Dubai designed for quality and reliability, offering advanced diagnostics, precision repairs, and professional performance vehicle servicing as a dependable alternative to dealerships.
-              </p>
+              <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-[1.65rem] font-bold text-white tracking-wide leading-snug drop-shadow-md">
+                Specialised in{' '}
+                <span className="text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                  American Premium Vehicles
+                </span>
+              </h2>
             </motion.div>
 
             {/* Mobile-Only Prominent ISO 9001 Rosette Badge (replaces description for sleek, punchy mobile UX) */}
@@ -440,9 +430,9 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
                   <img
                     src="/ISO/iso-9001-badge.png"
                     alt="Official Certified ISO 9001 Quality System Medal"
-                    className="w-24 xs:w-28 sm:w-32 h-auto select-none drop-shadow-[0_12px_24px_rgba(0,0,0,0.9)] drop-shadow-[0_0_20px_rgba(255,160,72,0.45)]"
+                    className="w-20 xs:w-24 sm:w-26 h-auto select-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.85)] drop-shadow-[0_0_16px_rgba(255,160,72,0.4)]"
                     onError={(e) => {
-                      e.currentTarget.src = '/ISO/cert.png';
+                      e.currentTarget.src = '/ISO/iso02.png';
                     }}
                   />
 
@@ -532,16 +522,15 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                whileHover={{ scale: 1.06, rotate: 1.5 }}
+                whileHover={{ scale: 1.05 }}
                 className="relative z-10 flex flex-col items-center"
               >
                 <img
                   src="/ISO/iso-9001-badge.png"
                   alt="Official Certified ISO 9001 Quality System Medal"
-                  className="w-48 h-auto xs:w-56 sm:w-64 md:w-72 lg:w-80 select-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] drop-shadow-[0_0_30px_rgba(255,160,72,0.5)] transition-all duration-300"
+                  className="w-36 h-auto sm:w-44 md:w-48 lg:w-56 select-none drop-shadow-[0_16px_28px_rgba(0,0,0,0.85)] drop-shadow-[0_0_24px_rgba(255,160,72,0.45)] transition-all duration-300"
                   onError={(e) => {
-                    // Fallback to cert.png if custom filename used
-                    e.currentTarget.src = '/ISO/cert.png';
+                    e.currentTarget.src = '/ISO/iso02.png';
                   }}
                 />
 

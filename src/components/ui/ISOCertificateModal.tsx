@@ -11,7 +11,7 @@ export interface ISOCertificateModalProps {
 export default function ISOCertificateModal({
   isOpen,
   onClose,
-  certificateSrc = '/ISO/cert.png',
+  certificateSrc = '/ISO/iso02.png',
 }: ISOCertificateModalProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -160,7 +160,7 @@ export default function ISOCertificateModal({
                     </h4>
                     <p className="text-xs text-[#BAC0D2] mb-4 leading-relaxed">
                       Please ensure the certificate image is placed at{' '}
-                      <code className="text-gold bg-black/50 px-2 py-0.5 rounded">public/ISO/cert.png</code>.
+                      <code className="text-gold bg-black/50 px-2 py-0.5 rounded">public/ISO/iso02.png</code>.
                     </p>
                   </div>
                 )}
