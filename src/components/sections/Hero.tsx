@@ -393,9 +393,9 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.4, duration: 0.6 }}
-              className="w-full max-w-2xl mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-black/65 backdrop-blur-md border border-white/15 shadow-xl shadow-black/70 text-center lg:text-left"
+              className="w-full max-w-2xl mt-3 sm:mt-4 p-4 sm:p-5 rounded-2xl bg-black/65 backdrop-blur-md border border-white/15 shadow-xl shadow-black/70 text-center lg:text-left"
             >
-              <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-[1.65rem] font-bold text-white tracking-wide leading-snug drop-shadow-md">
+              <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] font-bold text-white tracking-wide leading-snug drop-shadow-md">
                 Specialised in{' '}
                 <span className="text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   American Premium Vehicles
@@ -445,33 +445,6 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
               </div>
             </motion.div>
 
-            {/* Specialist Marques Strip: Balanced & High-Contrast on all screen sizes */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.7, duration: 0.5 }}
-              className="mt-2.5 sm:mt-4 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 w-full max-w-2xl"
-            >
-              {/* American Chip */}
-              <div className="w-full sm:w-auto inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 px-3.5 sm:px-4 py-2 sm:py-1.5 rounded-2xl sm:rounded-full bg-black/80 backdrop-blur-md border border-amber-500/50 shadow-xl shadow-black/70 text-center">
-                <span className="bg-gradient-to-r from-[#FFA048] to-[#FF6200] text-[#0A0C13] font-black text-[11px] sm:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm shrink-0">
-                  American
-                </span>
-                <span className="text-white font-semibold text-xs sm:text-sm tracking-wide leading-snug">
-                  Cadillac · Lincoln · GMC · Ford · Corvette · Jeep · Dodge
-                </span>
-              </div>
-
-              {/* Japanese Chip: Always 1 line / single row as requested */}
-              <div className="inline-flex flex-row items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/30 shadow-xl shadow-black/70 shrink-0">
-                <span className="bg-white/20 text-white font-black text-[10px] xs:text-[11px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-white/40 shadow-sm shrink-0">
-                  Japanese
-                </span>
-                <span className="text-white font-semibold text-xs sm:text-sm tracking-wide whitespace-nowrap">
-                  Lexus · Infiniti
-                </span>
-              </div>
-            </motion.div>
 
             {/* Action Buttons: Desktop Only (Hidden on Mobile because sticky bottom bar provides WhatsApp & Call buttons) */}
             <motion.div
