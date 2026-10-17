@@ -81,7 +81,13 @@ export default function TrustBar({ onOpenCertificate }: TrustBarProps = {}) {
                     <span className="absolute inset-0 rounded-2xl bg-gold/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
                   <div>
-                    <div className="font-serif text-2xl lg:text-3xl font-bold text-gold-gradient tracking-tight">
+                    <div
+                      className={`font-serif font-bold text-gold-gradient tracking-tight leading-none tabular-nums [font-variant-numeric:lining-nums] [font-feature-settings:'lnum'_1] ${
+                        item.isStatic
+                          ? 'text-2xl lg:text-3xl'
+                          : 'text-[2.2rem] lg:text-[3rem]'
+                      }`}
+                    >
                       <Counter
                         value={item.value}
                         suffix={item.suffix}

@@ -36,7 +36,7 @@ export const NAV_LINKS = [
 ];
 
 export const TRUST_ITEMS = [
-  { icon: 'BadgeCheck', label: 'Certified Technicians', value: 20, suffix: '+' },
+  { icon: 'BadgeCheck', label: 'Certified Professionals', value: 60, suffix: '+' },
   { icon: 'PackageCheck', label: 'Genuine Parts', value: 100, suffix: '%' },
   { icon: 'ScanLine', label: 'Advanced Diagnostics', value: 0, suffix: '', isStatic: true, staticText: 'Dealer-Level' },
   { icon: 'ReceiptText', label: 'Transparent Pricing', value: 0, suffix: '', isStatic: true, staticText: 'Always' },
@@ -46,7 +46,7 @@ export const STATS = [
   { label: 'Years of Experience', value: 10, suffix: '+' },
   { label: 'Vehicles Serviced', value: 30000, suffix: '+' },
   { label: 'Google Rating', value: 4.9, suffix: '★', decimals: 1 },
-  { label: 'Certified Technicians', value: 50, suffix: '+' },
+  { label: 'Certified Professionals', value: 60, suffix: '+' },
 ];
 
 // ── Brand Switcher Data ──────────────────────────────────────────

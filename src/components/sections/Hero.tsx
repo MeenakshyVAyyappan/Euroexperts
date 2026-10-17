@@ -398,7 +398,7 @@ export default function Hero({ onOpenCertificate }: HeroProps = {}) {
               <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] font-bold text-white tracking-wide leading-snug drop-shadow-md">
                 Specialised in{' '}
                 <span className="text-[#FFA048] font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                  American Premium Vehicles
+                  American Vehicles
                 </span>
               </h2>
             </motion.div>
